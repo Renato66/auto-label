@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps: 
-        - uses: Renato66/labeler@master
+        - uses: Renato66/auto-label@v1.0.0
           with:
               repo-token: ${{ secrets.GITHUB_TOKEN }}
               allow-create: false # default false
