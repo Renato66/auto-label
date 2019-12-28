@@ -8,6 +8,9 @@ inputs:
   allow-create:
     descriptioin: 'allow label creation'
     defaul: false
+  is-hidden:
+    descriptioin: 'Are checkboxes inside a comentary block?'
+    defaul: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
