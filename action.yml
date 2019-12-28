@@ -1,6 +1,8 @@
 name: 'Auto label'
 description: 'issue creator can check their own labels'
 author: 'Renato66'
+icon: 'check-square'
+color: 'blue'
 inputs: 
   repo-token:
     description: 'github token for the repository'
