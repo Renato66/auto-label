@@ -2,9 +2,12 @@ name: 'Container Action Template'
 description: 'Get started with Container actions'
 author: 'GitHub'
 inputs: 
-  myInput:
-    description: 'Input to use'
-    default: 'world'
+  repo-token:
+    description: 'github token for the repository'
+    required: true
+  allow-create:
+    descriptioin: 'allow label creation'
+    defaul: false
 runs:
   using: 'docker'
   image: 'Dockerfile'

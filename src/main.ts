@@ -4,19 +4,20 @@ const github = require('@actions/github');
 async function run() {
   try {
     const token = core.getInput('repo-token', {required: true});
-    const allowCreate = false // core.getInput('repo-token', {required: true});
+    const allowCreate = core.getInput('allow-create');
     const client = new github.GitHub(token);
     const context = github.context;
 
     let labels: string[] = getLabels(context.payload.issue.body)
-
-    console.log('adding labels...')
+    console.log(`Labels found: ${labels.length}`)
     if (!allowCreate) {
+      console.log('Removing uncreated labels...')
       labels = await removeUncreatedLabels(client, labels)
     }
+    console.log('Adding labels to issue...')
     await addLabels(client, context.payload.issue.number, labels)
-    console.log(`done ${labels.length} labels added`)
-
+    console.log('Done')
+    console.log(`${labels.length} labels added`)
   } catch (error) {
     core.setFailed(error.message);
   }
