@@ -4,18 +4,37 @@ const github = require('@actions/github');
 async function run() {
   try {
     const token = core.getInput('repo-token', {required: true});
+    const allowCreate = false // core.getInput('repo-token', {required: true});
     const client = new github.GitHub(token);
     const context = github.context;
 
-    const labels: string[] = getLabels(context.payload.issue.body)
+    let labels: string[] = getLabels(context.payload.issue.body)
 
     console.log('adding labels...')
-	  await addLabels(client, context.payload.issue.number, labels)
+    if (!allowCreate) {
+      labels = await removeUncreatedLabels(client, labels)
+    }
+    await addLabels(client, context.payload.issue.number, labels)
     console.log(`done ${labels.length} labels added`)
 
   } catch (error) {
     core.setFailed(error.message);
   }
+}
+
+async function removeUncreatedLabels(
+  client: any,
+  labels: string[]
+) {
+  const list: object[] = await client.issues.listLabelsForRepo({
+    owner: github.context.repo.owner,
+    repo: github.context.repo.repo
+  });
+  const labelNames: object = {}
+  list.forEach((elem: any) => {
+    labelNames[elem.name] = true
+  })
+  return labels.filter((elem: string) => labelNames[elem])
 }
 
 async function addLabels(
@@ -41,8 +60,8 @@ function getLabels (body: string) {
         comentary = false
       }
       if (comentary) {
-          if (line.includes('[x]')) {
-            labels.push(line.split('[x]')[1].trim())
+          if ((/\[x\]/i).test(line)) {
+            labels.push(line.split(/\[x\]/i)[1].trim())
         } 
       }
   })
