@@ -1,5 +1,5 @@
 name: 'Auto label'
-description: 'issue creator can check their onw labels'
+description: 'issue creator can check their own labels'
 author: 'Renato66'
 inputs: 
   repo-token:

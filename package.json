@@ -1,7 +1,7 @@
 {
-  "name": "container-toolkit-template",
-  "version": "0.0.0",
-  "description": "Container template action using actions/toolkit",
+  "name": "auto-label",
+  "version": "1.0.0",
+  "description": "issue creator can check their own labels",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
