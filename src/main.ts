@@ -61,8 +61,8 @@ function getLabels (body: string) {
         comentary = false
       }
       if (comentary) {
-          if ((/\[x\]/i).test(line)) {
-            labels.push(line.split(/\[x\]/i)[1].trim())
+          if ((/\[\s*x\s*\]/i).test(line)) {
+            labels.push(line.split(/\[\s*x\s*\]/i)[1].trim())
         } 
       }
   })
