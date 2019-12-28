@@ -1,6 +1,6 @@
-name: 'Container Action Template'
-description: 'Get started with Container actions'
-author: 'GitHub'
+name: 'Auto label'
+description: 'issue creator can check their onw labels'
+author: 'Renato66'
 inputs: 
   repo-token:
     description: 'github token for the repository'
