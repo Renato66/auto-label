@@ -7,7 +7,7 @@ name: Labeling new issue
 
 on:
     issues:
-        types: [opened]
+        types: [opened] # edited (optional)
     
 jobs:
   build:
