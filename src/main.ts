@@ -26,10 +26,11 @@ async function removeUncreatedLabels(
   client: any,
   labels: string[]
 ) {
-  const list: object[] = await client.issues.listLabelsForRepo({
+  const {data: list} = await client.issues.listLabelsForRepo({
     owner: github.context.repo.owner,
     repo: github.context.repo.repo
   });
+  console.log(list)
   const labelNames: object = {}
   list.forEach((elem: any) => {
     labelNames[elem.name] = true
