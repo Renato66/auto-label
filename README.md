@@ -1,5 +1,34 @@
-# Container Action Template
+# Creating
 
-To get started, click the `Use this template` button on this repository [which will create a new repository based on this template](https://github.blog/2019-06-06-generate-new-repositories-with-repository-templates/).
+add a file to `.github/workflows/new-issue.yml`
 
-For info on how to build your first Container action using the toolkit, see the [toolkit docs folder](https://github.com/actions/toolkit/blob/master/docs).
+```yml
+name: Labeling new issue
+
+on:
+    issues:
+        types: [opened]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps: 
+        - uses: Renato66/labeler@master
+          with:
+              repo-token: ${{ secrets.GITHUB_TOKEN }}
+              allow-create: false # default false
+              is-hidden: true # default false
+```
+
+```
+# new issue
+<!--
+- [] valid-label-1
+- [x] valid-label-2
+-->
+- [] valid-label-3
+- [x] valid-label-4
+
+```
+labels: valid-label-2
