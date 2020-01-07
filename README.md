@@ -18,7 +18,7 @@ jobs:
           with:
               repo-token: ${{ secrets.GITHUB_TOKEN }}
               ignore-comments: true # default true
-              labels-not-allowed: ['test', 'invalid'] # default []
+              labels-not-allowed: 'wontfix|duplicate' # default ''
 
 ```
 

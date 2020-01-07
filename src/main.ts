@@ -8,7 +8,7 @@ async function run() {
   try {
     const token = core.getInput('repo-token', {required: true})
     const ignoreComments = core.getInput('ignore-comments')
-    const labelsNotAllowed = core.getInput('labels-not-allowed')
+    const labelsNotAllowed = core.getInput('labels-not-allowed').split('|').filter(elem => elem !== "")
     const client = new github.GitHub(token)
     const issue = github.context.payload.issue
 

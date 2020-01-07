@@ -9,8 +9,11 @@ inputs:
     description: 'github token for the repository'
     required: true
   ignore-comments:
-    descriptioin: 'ignore labels inside comments'
+    descriptioin: 'ignore labels inside issue comments'
     defaul: true
+  labels-not-allowed:
+    descriptioin: 'ignore labels'
+    defaul: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
