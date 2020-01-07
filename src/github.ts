@@ -10,7 +10,7 @@ const getRepoLabels: Function = async (client: any, labelsNotAllowed: string[] =
   }).filter((elem: string) => {
     return labelsNotAllowed.find((label: string) => {
       label.toLowerCase() === elem.toLowerCase()
-    })
+    }) === undefined
   })
 }
 

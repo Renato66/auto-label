@@ -19,11 +19,13 @@ async function run() {
     console.log('Reading labels in issue...')
     const issueLabels: string[] = getIssueLabels(issue.body, repoLabels, ignoreComments)
     console.log(`Labels found: ${issueLabels.length}`)
-
-    console.log('Adding labels to issue...')
-    await addLabels(client, issue.number, issueLabels)
-    console.log('Done')
-
+    if (issueLabels.length !== 0 ) {
+      console.log('Adding labels to issue...')
+      await addLabels(client, issue.number, issueLabels)
+      console.log('Done')
+    } else {
+      console.log('Done')
+    }
   } catch (error) {
     core.setFailed(error.message)
   }
