@@ -7,28 +7,25 @@ name: Labeling new issue
 
 on:
     issues:
-        types: [opened] # edited (optional)
+        types: [opened] # || [opened, edited]
     
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps: 
-        - uses: Renato66/auto-label@v1.0.0
+        - uses: Renato66/auto-label@v2.0.0
           with:
               repo-token: ${{ secrets.GITHUB_TOKEN }}
-              allow-create: false # default false
-              is-hidden: true # default false
+              ignore-comments: true # default true
+              labels-not-allowed: ['test', 'invalid'] # default []
+
 ```
 
 ```
 # new issue
 <!--
-- [] valid-label-1
-- [x] valid-label-2
+Label list: Front end, Bug, Test, Vue
 -->
-- [] valid-label-3
-- [x] valid-label-4
-
+ I found a `bug` in the code 
 ```
-labels: valid-label-2

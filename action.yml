@@ -8,12 +8,9 @@ inputs:
   repo-token:
     description: 'github token for the repository'
     required: true
-  allow-create:
-    descriptioin: 'allow label creation'
-    defaul: false
-  is-hidden:
-    descriptioin: 'Are checkboxes inside a comentary block?'
-    defaul: false
+  ignore-comments:
+    descriptioin: 'ignore labels inside comments'
+    defaul: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
