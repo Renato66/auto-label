@@ -30,7 +30,6 @@
     "@actions/github": "^1.0.0",
     "@actions/io": "^1.0.0",
     "@actions/tool-cache": "^1.0.0",
-    "lint-staged": "^9.5.0",
     "path": "^0.12.7"
   },
   "devDependencies": {
@@ -42,14 +41,5 @@
     "prettier": "^1.17.1",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.1"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.ts": [
-      "tsc",
-      "git add"
-    ]
   }
 }
