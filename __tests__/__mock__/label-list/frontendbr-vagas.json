@@ -1,0 +1,272 @@
+[
+  {
+    "id": 324087046,
+    "node_id": "MDU6TGFiZWwzMjQwODcwNDY=",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/Alocado",
+    "name": "Alocado",
+    "color": "6befe6",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 321622629,
+    "node_id": "MDU6TGFiZWwzMjE2MjI2Mjk=",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/CLT",
+    "name": "CLT",
+    "color": "7fe266",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1504140182,
+    "node_id": "MDU6TGFiZWwxNTA0MTQwMTgy",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/Especialista",
+    "name": "Especialista",
+    "color": "d114bb",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 327119859,
+    "node_id": "MDU6TGFiZWwzMjcxMTk4NTk=",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/Est%C3%A1gio",
+    "name": "Estágio",
+    "color": "6c46ea",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1883693801,
+    "node_id": "MDU6TGFiZWwxODgzNjkzODAx",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/Falta%20de%20informa%C3%A7%C3%B5es",
+    "name": "Falta de informações",
+    "color": "ededed",
+    "default": false,
+    "description": null
+  },
+  {
+    "id": 321622757,
+    "node_id": "MDU6TGFiZWwzMjE2MjI3NTc=",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/Freela",
+    "name": "Freela",
+    "color": "7fe266",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 321622469,
+    "node_id": "MDU6TGFiZWwzMjE2MjI0Njk=",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/J%C3%BAnior",
+    "name": "Júnior",
+    "color": "6c46ea",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 321622700,
+    "node_id": "MDU6TGFiZWwzMjE2MjI3MDA=",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/PJ",
+    "name": "PJ",
+    "color": "7fe266",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 333031351,
+    "node_id": "MDU6TGFiZWwzMzMwMzEzNTE=",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/Pendente%20de%20informa%C3%A7%C3%B5es",
+    "name": "Pendente de informações",
+    "color": "dddddd",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 321622540,
+    "node_id": "MDU6TGFiZWwzMjE2MjI1NDA=",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/Pleno",
+    "name": "Pleno",
+    "color": "6c46ea",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 324086912,
+    "node_id": "MDU6TGFiZWwzMjQwODY5MTI=",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/Remoto",
+    "name": "Remoto",
+    "color": "6befe6",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1940096286,
+    "node_id": "MDU6TGFiZWwxOTQwMDk2Mjg2",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/Stale",
+    "name": "Stale",
+    "color": "ededed",
+    "default": false,
+    "description": null
+  },
+  {
+    "id": 321622600,
+    "node_id": "MDU6TGFiZWwzMjE2MjI2MDA=",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/S%C3%AAnior",
+    "name": "Sênior",
+    "color": "6c46ea",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1178247057,
+    "node_id": "MDU6TGFiZWwxMTc4MjQ3MDU3",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/[Acre]",
+    "name": "[Acre]",
+    "color": "f9745c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1178247187,
+    "node_id": "MDU6TGFiZWwxMTc4MjQ3MTg3",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/[Alagoas]",
+    "name": "[Alagoas]",
+    "color": "f9745c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1178247435,
+    "node_id": "MDU6TGFiZWwxMTc4MjQ3NDM1",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/[Amap%C3%A1]",
+    "name": "[Amapá]",
+    "color": "f9745c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1178247619,
+    "node_id": "MDU6TGFiZWwxMTc4MjQ3NjE5",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/[Amazonas]",
+    "name": "[Amazonas]",
+    "color": "f9745c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1178247842,
+    "node_id": "MDU6TGFiZWwxMTc4MjQ3ODQy",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/[Bahia]",
+    "name": "[Bahia]",
+    "color": "f9745c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1178256134,
+    "node_id": "MDU6TGFiZWwxMTc4MjU2MTM0",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/[Brasilia]",
+    "name": "[Brasilia]",
+    "color": "f9745c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1178247989,
+    "node_id": "MDU6TGFiZWwxMTc4MjQ3OTg5",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/[Cear%C3%A1]",
+    "name": "[Ceará]",
+    "color": "f9745c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1178248097,
+    "node_id": "MDU6TGFiZWwxMTc4MjQ4MDk3",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/[Distrito%20Federal]",
+    "name": "[Distrito Federal]",
+    "color": "f9745c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1178248234,
+    "node_id": "MDU6TGFiZWwxMTc4MjQ4MjM0",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/[Esp%C3%ADrito%20Santo]",
+    "name": "[Espírito Santo]",
+    "color": "f9745c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 868399304,
+    "node_id": "MDU6TGFiZWw4NjgzOTkzMDQ=",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/[Exterior]",
+    "name": "[Exterior]",
+    "color": "f9745c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1178248371,
+    "node_id": "MDU6TGFiZWwxMTc4MjQ4Mzcx",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/[Goi%C3%A1s]",
+    "name": "[Goiás]",
+    "color": "f9745c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1178248542,
+    "node_id": "MDU6TGFiZWwxMTc4MjQ4NTQy",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/[Maranh%C3%A3o]",
+    "name": "[Maranhão]",
+    "color": "f9745c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1178248801,
+    "node_id": "MDU6TGFiZWwxMTc4MjQ4ODAx",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/[Mato%20Grosso%20do%20Sul]",
+    "name": "[Mato Grosso do Sul]",
+    "color": "f9745c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1178248648,
+    "node_id": "MDU6TGFiZWwxMTc4MjQ4NjQ4",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/[Mato%20Grosso]",
+    "name": "[Mato Grosso]",
+    "color": "f9745c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1178249004,
+    "node_id": "MDU6TGFiZWwxMTc4MjQ5MDA0",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/[Minas%20Gerais]",
+    "name": "[Minas Gerais]",
+    "color": "f9745c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1178249457,
+    "node_id": "MDU6TGFiZWwxMTc4MjQ5NDU3",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/[Paran%C3%A1]",
+    "name": "[Paraná]",
+    "color": "f9745c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1178249288,
+    "node_id": "MDU6TGFiZWwxMTc4MjQ5Mjg4",
+    "url": "https://api.github.com/repos/frontendbr/vagas/labels/[Para%C3%ADba]",
+    "name": "[Paraíba]",
+    "color": "f9745c",
+    "default": false,
+    "description": ""
+  }
+]

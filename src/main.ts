@@ -1,17 +1,18 @@
-export {}
-const core = require('@actions/core')
-const github = require('@actions/github')
+import * as core from '@actions/core'
+import * as github from '@actions/github'
 const { getIssueLabels } = require('./functions')
 const { getRepoLabels, addLabels } = require('./github')
 
-async function run() {
+export async function run() {
   try {
     const token = core.getInput('repo-token', {required: true})
     const ignoreComments = core.getInput('ignore-comments')
     const labelsNotAllowed = core.getInput('labels-not-allowed').split('|').filter(elem => elem !== "")
     const client = new github.GitHub(token)
     const issue = github.context.payload.issue
-
+    if (issue === undefined) {
+      throw new Error('Issue undefined')
+    }
     console.log('Getting repository labels...')
     const repoLabels: string = await getRepoLabels(client, labelsNotAllowed)
     console.log(`Repository labels found: ${repoLabels.length}`)
@@ -28,6 +29,7 @@ async function run() {
     }
   } catch (error) {
     core.setFailed(error.message)
+    throw error;
   }
 }
 
