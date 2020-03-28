@@ -1,5 +1,8 @@
+const escapeRegExp: Function = (string: String): String => {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+}
 const compareLabels: Function = (labels: string[]): Function => {
-  const labelsRegex = new RegExp(labels.map(elem => `\\b${elem}\\b`).join('|'), 'gi')
+  const labelsRegex = new RegExp(labels.map(elem => `\\b${escapeRegExp(elem)}\\b`).join('|'), 'gi')
   const hasLabels = (line: string): string[] => {
     const selectedLabels = line.match(labelsRegex) || []
     return selectedLabels.map(elem => {
