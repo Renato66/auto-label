@@ -1,6 +1,6 @@
 <template>
   <v-container class="pt-8">
-    <v-layout>
+    <v-layout row wrap>
       <v-flex xs12 sm5 px-2>
         <v-container>
           <v-layout row wrap>

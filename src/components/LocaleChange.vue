@@ -1,7 +1,7 @@
 <template>
-  <v-menu content-class="br-8 mr-5" offset-y>
+  <v-menu content-class="br-8" offset-y>
     <template v-slot:activator="{ on }">
-      <v-btn class="mr-4" icon large :ripple="false" aria-label="Choose language" v-on="on">
+      <v-btn icon large :ripple="false" aria-label="Choose language" v-on="on">
         <v-avatar size="24" tile>
           <v-img :src="selectedLocale.flag" />
         </v-avatar>
@@ -17,6 +17,9 @@
         <v-avatar size="24" tile>
           <v-img :src="locale.flag" />
         </v-avatar>
+        <div class="ml-2">
+          {{ locale.name }}
+        </div>
       </v-list-item>
     </v-list>
   </v-menu>
@@ -29,7 +32,7 @@ export default {
       supportedLocales: [
         {
           id: 'pt',
-          name: 'Portugues',
+          name: 'Português',
           flag: 'https://www.countryflags.io/BR/flat/24.png'
         },
         {

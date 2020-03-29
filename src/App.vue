@@ -11,12 +11,12 @@
         </h1>
       </div>
       <v-spacer></v-spacer>
+      <LocaleChange />
       <v-btn href="https://github.com/Renato66/auto-label" target="_blank" icon>
         <v-icon>
           mdi-github
         </v-icon>
       </v-btn>
-      <LocaleChange />
     </v-app-bar>
     <v-content>
       <router-view/>
