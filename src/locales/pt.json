@@ -1,0 +1,44 @@
+{
+  "repo": {
+    "title": "Configurações avançadas",
+    "details": "Por padrão todas as labels podem ser tageadas, se você quiser mais customizações, insira seu repositório:",
+    "label": "autor/repositório",
+    "error": "Um erro ocorreu, por favor reporte no github"
+  },
+  "types": {
+    "title": "Quando as labels serão adiconadas",
+    "opened": "Nova issue",
+    "edited": "Issue editada",
+    "both": "Nova e editada"
+  },
+  "secret": {
+    "title": "Quem irá adicionar as labels",
+    "token": "Github bot",
+    "userToken": "Sua conta do github",
+    "details": {
+      "GITHUB_TOKEN": "O repositório irá providenciar um token de accesso para adicionar labels automaticamente",
+      "GITHUB_USER_TOKEN": "Você precisará gerar um token de usuário, mais informações <a href='https://help.github.com/pt/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line' target='_blank'>aqui</a>, e precisará adicionar o token como um secret no repositório mais informações <a href='https://help.github.com/pt/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets' target='_blank'>aqui</a>"
+    }
+  },
+  "ignoreComments": {
+    "title": "Irá ignorar os comentário dentro da issue",
+    "true": "Ignorar",
+    "false": "Verificar"
+  },
+  "lables": {
+    "title": "Labels do repositório",
+    "details": "Você pode selecionar / desselecionar as labels desejadas, e pode adicionar sinônimos as labels"
+  },
+  "modal": {
+    "title": "Adicionar sinônimos",
+    "text": "Inserir os textos que quando encontrados na issue irão acionar a label",
+    "done": "Ok",
+    "label": "Inserir texto",
+    "hint": "Pressione enter para adicionar",
+    "error": "O texto `{text}` não foi adicionado"
+  },
+  "yml": {
+    "copy": "Copiar",
+    "copied": "Arquivo yml copiado!"
+  }
+}

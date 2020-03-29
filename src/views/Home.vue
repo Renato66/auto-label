@@ -1,7 +1,7 @@
 <template>
   <v-container class="pt-8">
     <v-layout>
-      <v-flex xs12 sm5>
+      <v-flex xs12 sm5 px-2>
         <v-container>
           <v-layout row wrap>
             <v-flex xs12>
@@ -22,8 +22,9 @@
               <h2>
                 {{ $t('secret.title') }}
               </h2>
+              <p class="mb-0" v-html="$t(`secret.details.${secret}`)"></p>
             </v-flex>
-            <v-flex>
+            <v-flex xs12>
               <v-radio-group v-model="secret" row>
                 <v-radio :label="$t('secret.token')" value="GITHUB_TOKEN"></v-radio>
                 <v-radio :label="$t('secret.userToken')" value="GITHUB_USER_TOKEN"></v-radio>
@@ -120,7 +121,7 @@
           </v-layout>
         </v-container>
       </v-flex>
-      <v-flex xs12 sm7>
+      <v-flex xs12 sm7 px-2>
         <YmlTransform :fields="fields" />
       </v-flex>
     </v-layout>

@@ -1,5 +1,4 @@
 {
-  "message": "hello i18n !!",
   "repo": {
     "title": "Advanced configuration",
     "details": "By default all labels are allowed to be tagged, if you want to customize more, insert your repository:",
@@ -15,7 +14,11 @@
   "secret": {
     "title": "Who will add the labels",
     "token": "Github bot",
-    "userToken": "Your github account"
+    "userToken": "Your github account",
+    "details": {
+      "GITHUB_TOKEN": "The repository will provide access to write in labels automatic",
+      "GITHUB_USER_TOKEN": "You will need to generate an user token more info <a href='https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line' target='_blank'>here</a> and add it as a secret in your repository more info <a href='https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets' target='_blank'>here</a>"
+    }
   },
   "ignoreComments": {
     "title": "Will igonre labels inside comments",
