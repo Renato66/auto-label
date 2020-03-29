@@ -19,6 +19,6 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BASE_BRANCH: source
+        BASE_BRANCH: front
         BRANCH: gh-pages
         FOLDER: dist
