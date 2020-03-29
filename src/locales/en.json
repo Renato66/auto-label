@@ -1,0 +1,37 @@
+{
+  "message": "hello i18n !!",
+  "repo": {
+    "title": "Advanced configuration",
+    "details": "By default all labels are allowed to be tagged, if you want to customize more, insert your repository:",
+    "label": "owner/repo",
+    "error": "An error happened, report to our issue"
+  },
+  "types": {
+    "title": "Select when labels will be added",
+    "opened": "Opened",
+    "edited": "Edited",
+    "both": "Opened and edited"
+  },
+  "secret": {
+    "title": "Who will add the labels",
+    "token": "Github bot",
+    "userToken": "Your github account"
+  },
+  "ignoreComments": {
+    "title": "Will igonre labels inside comments",
+    "true": "Ignore",
+    "false": "Verify"
+  },
+  "lables": {
+    "title": "Repository lables",
+    "details": "You can check and uncheck the disired label, and add synonyms to labels"
+  },
+  "modal": {
+    "title": "Adding synonyms",
+    "text": "Insert texts that when found on a issue will trigger the label",
+    "done": "Done",
+    "label": "Insert text",
+    "hint": "Press enter to add",
+    "error": "The `{text}` was not added"
+  }
+}
