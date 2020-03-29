@@ -54,7 +54,6 @@
               :label="$t('repo.label')"
               solo
               v-model="repo"
-              @blur="searchLabels"
               @keypress.enter="searchLabels"
               prepend-inner-icon="mdi-github"
               :loading="loading"
@@ -67,8 +66,13 @@
               </v-text-field>
 
             </v-flex>
-            <v-flex xs3 pt-2 pl-4 v-if="labelList.length !== 0">
-              <v-btn icon color="primary">
+            <v-flex xs3 pt-2 pl-4>
+              <v-btn icon color="primary" @click="searchLabels"  v-if="labelList.length === 0">
+                <v-icon>
+                  mdi-magnify
+                </v-icon>
+              </v-btn>
+              <v-btn icon color="primary" @click="clearRepo"  v-else>
                 <v-icon>
                   mdi-close
                 </v-icon>
@@ -151,6 +155,14 @@ export default {
     }
   },
   methods: {
+    clearRepo () {
+      this.repo = ''
+      this.labelList = ''
+      this.$set(this, 'labelsSynonyms', {})
+      this.$set(this, 'labelsNotAllowed', [])
+      this.ymlCompile('labelsSynonyms')
+      this.ymlCompile('labelsNotAllowed')
+    },
     openSynonyms (value) {
       this.label = value
     },

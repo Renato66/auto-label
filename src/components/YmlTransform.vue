@@ -2,7 +2,7 @@
   <v-card>
     <v-card-text style="overflow:scroll">
       <div class="text-none overline mb-4">.github/workflows/issue.yml</div>
-<code class="px-4" style="width: 100%;">
+<code class="px-4" style="width: 100%;" ref="code">
 name: Labeling new issue
 on:
   issues:
@@ -18,15 +18,24 @@ jobs:
     </v-card-text>
     <v-card-actions class="pb-4 pt-0">
       <v-spacer></v-spacer>
-      <v-btn
-        text
-        outlined
-        color="primary"
-      >
-        Copy
-      </v-btn>
+       <v-tooltip v-model="copied" right>
+        <template v-slot:activator="{ on }">
+          <span v-on="on" class="white--text">x</span>
+          <v-btn
+            outlined
+            color="primary"
+            @click="copyCode"
+
+          >
+            {{ $t('yml.copy') }}
+          </v-btn>
+        </template>
+        <span>{{ $t('yml.copied') }}</span>
+      </v-tooltip>
       <v-spacer></v-spacer>
     </v-card-actions>
+     <textarea type="hidden" id="testing-code" :value="code" style="position: absolute;top: 0;z-index: -1;">
+     </textarea>
   </v-card>
 </template>
 
@@ -35,6 +44,33 @@ export default {
   props: {
     fields: {
       type: Object
+    }
+  },
+  data () {
+    return {
+      code: '',
+      copied: false
+    }
+  },
+  methods: {
+    copyCode () {
+      this.code = this.$refs.code.innerHTML.replace('\n', '')
+      setTimeout(() => {
+        let testingCodeToCopy = document.querySelector('#testing-code')
+        testingCodeToCopy.setAttribute('type', 'text')
+        testingCodeToCopy.select()
+        try {
+          const successful = document.execCommand('copy')
+          this.copied = successful
+          setTimeout(() => {
+            this.copied = false
+          }, 1500)
+        } catch (err) {
+          alert('Oops, unable to copy')
+        }
+        testingCodeToCopy.setAttribute('type', 'hidden')
+        window.getSelection().removeAllRanges()
+      }, 500)
     }
   }
 }

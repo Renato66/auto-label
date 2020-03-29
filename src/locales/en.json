@@ -33,5 +33,9 @@
     "label": "Insert text",
     "hint": "Press enter to add",
     "error": "The `{text}` was not added"
+  },
+  "yml": {
+    "copy": "Copy",
+    "copied": "Yml file copied!"
   }
 }
