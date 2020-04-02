@@ -21,6 +21,7 @@ describe('Testing compareLabels function', () => {
   });
 
   it('should not remove any label', async () => {
+    process.env['INPUT_LABELS-NOT-ALLOWED'] = `["NotListedLabel"]`
     const labelsList = require(`./__mock__/${fakeRepo}/labels.json`)
     nock('https://api.github.com')
       .persist()
@@ -34,6 +35,7 @@ describe('Testing compareLabels function', () => {
   });
 
   it('should remove one label', async () => {
+    process.env['INPUT_LABELS-NOT-ALLOWED'] = `["Remoto"]`
     const labelsList = require(`./__mock__/${fakeRepo}/labels.json`)
     nock('https://api.github.com')
       .persist()
@@ -41,8 +43,7 @@ describe('Testing compareLabels function', () => {
       .reply(200, labelsList);
 
     const client = new github.GitHub('fakeToken')
-    const labelsNotAllowed = ['Remoto']
-    const result = await getRepoLabels(client, labelsNotAllowed)
+    const result = await getRepoLabels(client)
     expect(result.length).toBe(labelsList.length - 1)
   });
     

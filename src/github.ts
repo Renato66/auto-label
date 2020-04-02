@@ -1,6 +1,8 @@
-const github = require('@actions/github')
+import { getLabelsNotAllowed } from './functions'
+import * as github from '@actions/github'
 
-const getRepoLabels: Function = async (client: any, labelsNotAllowed: string[] = []) => {
+const getRepoLabels: Function = async (client: any) => {
+  const labelsNotAllowed = getLabelsNotAllowed()
   const {data: list} = await client.issues.listLabelsForRepo({
     owner: github.context.repo.owner,
     repo: github.context.repo.repo

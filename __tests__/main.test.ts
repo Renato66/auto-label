@@ -7,7 +7,7 @@ describe('Testing action functionalitie', () => {
   it('should find the labels', async () => {
     process.env['INPUT_REPO-TOKEN'] = 'fakeToken';
     process.env['INPUT_IGNORE-COMMENTS'] = 'true';
-    process.env['INPUT_LABELS-NOT-ALLOWED'] = '[]';
+    process.env['INPUT_LABELS-NOT-ALLOWED'] = `["Stale"]`;
     
     process.env['GITHUB_REPOSITORY'] = fakeRepo;
     process.env['GITHUB_EVENT_PATH'] = path.join(__dirname, `__mock__/${fakeRepo}/payload.json`);

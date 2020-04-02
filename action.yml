@@ -10,10 +10,13 @@ inputs:
     required: true
   ignore-comments:
     descriptioin: 'ignore labels inside issue comments'
-    defaul: true
+    default: true
+  labels-synonyms:
+    descriptioin: 'ignore labels inside issue comments'
+    default: ''
   labels-not-allowed:
     descriptioin: 'ignore labels'
-    defaul: ''
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
