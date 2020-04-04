@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
   steps:
-    - uses: Renato66/auto-label@v2.0.0
+    - uses: Renato66/auto-label@{{ version }}
       with:
         repo-token: {{ `\{\{ secrets.${fields.secret} \}\}` }}{{ fields.ignoreComments ? '' : `\n        ignore-comments: ${fields.ignoreComments}` }}{{ fields.labelsSynonyms === '{}' ? '' : `\n        labels-synonyms: \'${fields.labelsSynonyms}\'` }}{{ fields.labelsNotAllowed === '[]' ? '' : `\n        labels-not-allowed: '${fields.labelsNotAllowed}'` }}{{ fields.defaultLabels === '[]' ? '' : `\n        default-labels: '${fields.defaultLabels}'` }}
 </code>
@@ -49,7 +49,8 @@ export default {
   data () {
     return {
       code: '',
-      copied: false
+      copied: false,
+      version: ''
     }
   },
   methods: {
@@ -71,6 +72,20 @@ export default {
         testingCodeToCopy.setAttribute('type', 'hidden')
         window.getSelection().removeAllRanges()
       }, 500)
+    }
+  },
+  async mounted () {
+    try {
+      const response = await fetch(` https://api.github.com/repos/renato66/auto-label/releases/latest`)
+      if (response.ok) { // if HTTP-status is 200-299
+        const result = await response.json()
+        this.version = result.tag_name
+      } else {
+        throw new Error(response.status)
+      }
+    } catch (error) {
+      console.log(error)
+      alert('error getting lastest version')
     }
   }
 }
