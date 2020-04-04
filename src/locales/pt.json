@@ -25,9 +25,17 @@
     "true": "Ignorar",
     "false": "Verificar"
   },
-  "lables": {
+  "labels": {
     "title": "Labels do repositório",
-    "details": "Você pode selecionar / desselecionar as labels desejadas, e pode adicionar sinônimos as labels"
+    "details": "Você pode selecionar / desselecionar as labels desejadas. Pode adicionar sinônimos as labels. Pode definir labels padrões que irão ser tageadas em todas a issues.",
+    "default": {
+      "text": "Padrão",
+      "set": "Definir padrão"
+    },
+    "synonyms": {
+      "text": "+ {n} sinônimo | + {n} sinônimos",
+      "add": "Adicionar sinônimos"
+    }
   },
   "modal": {
     "title": "Adicionar sinônimos",

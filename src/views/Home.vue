@@ -83,10 +83,10 @@
           <v-layout row wrap v-if="labelList.length !== 0">
             <v-flex xs12>
               <h2>
-                {{ $t('lables.title') }}
+                {{ $t('labels.title') }}
               </h2>
               <p class="">
-                {{ $t('lables.details') }}
+                {{ $t('labels.details') }}
               </p>
             </v-flex>
             <v-flex xs12 v-for="(label, index) in labelList" :key="index">
@@ -108,19 +108,19 @@
                             <v-icon x-small left>
                               mdi-plus
                             </v-icon>
-                            Add synonyms
+                            {{ $t('labels.synonyms.add') }}
                           </v-btn>
                           <v-btn @click.stop="toggleDefault(label.name)"  rounded dark x-small color="primary" class="ml-2 text-none" >
                             <v-icon x-small left>
                               mdi-plus
                             </v-icon>
-                            Set default
+                            {{ $t('labels.default.set') }}
                           </v-btn>
                         </div>
                       </v-expand-transition>
                       {{label.name}}
-                      <span class="ml-1 caption primary--text" v-if="isDefault(label.name)">(Default)</span>
-                      <span class="ml-1 caption primary--text" v-if="labelsSynonyms[label.name]">({{ `+ ${labelsSynonyms[label.name].length} Synonyms` }})</span>
+                      <span class="ml-1 caption primary--text" v-if="isDefault(label.name)">({{ $t('labels.default.text') }})</span>
+                      <span class="ml-1 caption primary--text" v-if="labelsSynonyms[label.name]">({{ $t('labels.synonyms.text', labelsSynonyms[label.name].length) }})</span>
                     </div>
                   </v-hover>
                 </template>

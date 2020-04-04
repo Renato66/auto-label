@@ -25,9 +25,17 @@
     "true": "Ignore",
     "false": "Verify"
   },
-  "lables": {
-    "title": "Repository lables",
-    "details": "You can check and uncheck the disired label, and add synonyms to labels"
+  "labels": {
+    "title": "Repository labels",
+    "details": "You can check and uncheck the disired label, and add synonyms to labels, can define default labels that will be always set in every issue",
+    "default": {
+      "text": "Default",
+      "set": "Set default"
+    },
+    "synonyms": {
+      "text": "+ {n} synonym | + {n} synonyms",
+      "add": "Add synonyms"
+    }
   },
   "modal": {
     "title": "Adding synonyms",
