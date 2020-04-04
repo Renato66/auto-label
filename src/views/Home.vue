@@ -226,6 +226,13 @@ export default {
             }
             return true
           }
+          const booleanSet = (elem, line) => {
+            if (line.includes(elem.text)) {
+              this.$set(this, elem.field, JSON.parse(line.split(': ')[1]))
+              return false
+            }
+            return true
+          }
           const jsonSet = (elem, line) => {
             if (line.includes(elem.text)) {
               let str = line.split(': ')[1]
@@ -244,6 +251,11 @@ export default {
               text: 'repo-token:',
               field: 'secret',
               setFunction: secretSet
+            },
+            {
+              text: 'ignore-comments:',
+              field: 'ignoreComments',
+              setFunction: booleanSet
             },
             {
               text: 'labels-synonyms:',
