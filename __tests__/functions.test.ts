@@ -55,11 +55,27 @@ describe('Testing getIssueLabels function', () => {
   })
 
   it('should not add `new` label', async () => {
-    const body = `There isn an error on system a \r\n\r\n\r\n **VAGA PROGRAMADOR ANGULAR/.NET –n\r\n\r\n <!-- new -->`
     const labels = ['bug', 'test', 'new']
-    const body2 = `There isn an error on system a \r\n\r\n\r\n **VAGA PROGRAMADOR ANGULAR/.NET –n\r\n\r\n <!--\n\n restes\n new \n-->`
+    const body = `There is an error on system a \r\n\r\n\r\n **VAGA PROGRAMADOR ANGULAR/.NET –n\r\n\r\n <!-- new -->`
+    const body2 = `There is an error on system a \r\n\r\n\r\n **VAGA PROGRAMADOR ANGULAR/.NET –n\r\n\r\n <!--\n\n restes\n new \n-->`
+    const body3 = `There is an bug on system a \r\n\r\n\r\n **VAGA PROGRAMADOR ANGULAR/.NET –n\r\n\r\n <!--\n\n restes\n new \n-->`
     expect(getIssueLabels(body, labels)).toStrictEqual([])
     expect(getIssueLabels(body2, labels)).toStrictEqual([])
+    expect(getIssueLabels(body3, labels)).toStrictEqual(['bug'])
+  })
+
+  it('should return default label', async () => {
+    process.env['INPUT_DEFAULT-LABELS'] = `["triage"]`
+    const body = `There is an error on system a \r\n\r\n\r\n **VAGA PROGRAMADOR ANGULAR/.NET –n\r\n\r\n <!-- new -->`
+    const labels = ['bug', 'test', 'new', 'triage']
+    expect(getIssueLabels(body, labels)).toStrictEqual(['triage'])
+  })
+
+  it('should return bug as text `error` is a synonym', async () => {
+    process.env['INPUT_LABELS-SYNONYMS'] = `{"bug":["error"]}`
+    const body = `There is an error on system a \r\n\r\n\r\n **VAGA PROGRAMADOR ANGULAR/.NET –n\r\n\r\n <!-- new -->`
+    const labels = ['bug', 'test', 'new']
+    expect(getIssueLabels(body, labels)).toStrictEqual(['bug'])
   })
  
 })

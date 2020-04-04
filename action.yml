@@ -12,10 +12,13 @@ inputs:
     descriptioin: 'ignore labels inside issue comments'
     default: true
   labels-synonyms:
-    descriptioin: 'ignore labels inside issue comments'
+    descriptioin: 'text synonyms for labels'
     default: ''
   labels-not-allowed:
-    descriptioin: 'ignore labels'
+    descriptioin: 'ignored labels'
+    default: ''
+  default-labels:
+    descriptioin: 'default labels'
     default: ''
 runs:
   using: 'docker'

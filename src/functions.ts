@@ -54,8 +54,8 @@ const getIssueLabels: Function = (body: string, labels: string[]): string[] => {
       selectedLabels.push(elem)
     })
   }
-  
-  return [...new Set(selectedLabels)]
+  const defaultLabels = getDefaultLabels()
+  return [...new Set([...selectedLabels, ...defaultLabels])]
 }
 
 const getLabelsNotAllowed: Function = (): string[] => {
