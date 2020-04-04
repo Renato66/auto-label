@@ -45,18 +45,9 @@ const getIssueLabels: Function = (body: string, labels: string[]): string[] => {
   let hasLabels: Function = compareLabels(labels)
   const ignoreComments = getIgnoreComments()
   if (ignoreComments) {
-    let comentary: boolean = false
-    body.split('\n').forEach((line: string) => {
-      if (line.includes('<!--')) {
-        comentary = true
-      } if (line.includes('-->')) {
-        comentary = false
-      }
-      if (!comentary) {
-        hasLabels(line).map(elem => {
-          selectedLabels.push(elem)
-        })
-      }
+    const noCommentaryBody = body.replace(/\<!--(.|\n)*?-->/g, '')
+    hasLabels(noCommentaryBody).map(elem => {
+      selectedLabels.push(elem)
     })
   } else {
     hasLabels(body).map(elem => {
@@ -79,10 +70,15 @@ const getIgnoreComments: Function = (): boolean => {
   return core.getInput('ignore-comments') ? core.getInput('ignore-comments') === 'true' : true
 }
 
+const getDefaultLabels: Function = (): boolean => {
+  return core.getInput('default-labels') ? JSON.parse(core.getInput('default-labels')) : []
+}
+
 export {
   compareLabels,
   getIssueLabels,
   getLabelsNotAllowed,
   getLabelsSynonyms,
-  getIgnoreComments
+  getIgnoreComments,
+  getDefaultLabels
 }
