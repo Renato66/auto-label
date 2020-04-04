@@ -214,7 +214,7 @@ export default {
           const text = await response.text()
           const secretSet = (elem, line) => {
             if (line.includes(elem.text)) {
-              this.$set(this, elem.field, line.split(': {{ secrets.')[1].split(' }}')[0])
+              this.$set(this, elem.field, line.split(': ${{ secrets.')[1].split(' }}')[0])
               return false
             }
             return true
