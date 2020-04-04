@@ -72,7 +72,11 @@ export default {
     },
     remove (value) {
       const synonyms = this.synonyms.filter(elem => elem !== value)
-      this.$emit('update:synonyms', synonyms)
+      if (synonyms.length === 0) {
+        this.$emit('update:synonyms', undefined)
+      } else {
+        this.$emit('update:synonyms', synonyms)
+      }
     },
     addSynonym () {
       const synonyms = [...this.synonyms, this.newSynonym].sort()

@@ -91,10 +91,11 @@
             </v-flex>
             <v-flex xs12 v-for="(label, index) in labelList" :key="index">
               <v-checkbox
-                @change="toggleLabel(label.description)"
-                :value-comparator="() => { return isAllowed(label.description)}"
+                @change="toggleLabel(label.name)"
+                :value-comparator="() => { return isAllowed(label.name)}"
                 inset
-                :value="label.description">
+                color="primary"
+                :value="label.name">
                 <template v-slot:label>
                   <v-hover
                     v-slot:default="{ hover }"
@@ -103,16 +104,23 @@
                     <div>
                       <v-expand-transition>
                         <div v-show="hover" style="position:absolute; padding-top:26px;z-index:1;width:100%">
-                          <v-btn :disabled="!isAllowed(label.description)" @click.stop="openSynonyms(label.description)"  rounded dark x-small color="primary" class="text-none" >
+                          <v-btn @click.stop="openSynonyms(label.name)"  rounded dark x-small color="primary" class="text-none" >
                             <v-icon x-small left>
                               mdi-plus
                             </v-icon>
                             Add synonyms
                           </v-btn>
+                          <v-btn @click.stop="toggleDefault(label.name)"  rounded dark x-small color="primary" class="ml-2 text-none" >
+                            <v-icon x-small left>
+                              mdi-plus
+                            </v-icon>
+                            Set default
+                          </v-btn>
                         </div>
                       </v-expand-transition>
-
-                      {{label.description}}
+                      {{label.name}}
+                      <span class="ml-1 caption primary--text" v-if="isDefault(label.name)">(Default)</span>
+                      <span class="ml-1 caption primary--text" v-if="labelsSynonyms[label.name]">({{ `+ ${labelsSynonyms[label.name].length} Synonyms` }})</span>
                     </div>
                   </v-hover>
                 </template>
@@ -149,9 +157,11 @@ export default {
       ignoreComments: true,
       labelsSynonyms: {},
       labelsNotAllowed: [],
+      defaultLabels: [],
       compiled: {
         labelsSynonyms: '',
-        labelsNotAllowed: ''
+        labelsNotAllowed: '',
+        defaultLabels: ''
       }
     }
   },
@@ -161,15 +171,29 @@ export default {
       this.labelList = ''
       this.$set(this, 'labelsSynonyms', {})
       this.$set(this, 'labelsNotAllowed', [])
+      this.$set(this, 'defaultLabels', [])
       this.ymlCompile('labelsSynonyms')
       this.ymlCompile('labelsNotAllowed')
+      this.ymlCompile('defaultLabels')
     },
     openSynonyms (value) {
       this.label = value
     },
+    toggleDefault (value) {
+      if (!this.isDefault(value)) {
+        this.$set(this.labelsSynonyms, value, undefined)
+        this.ymlCompile('labelsSynonyms')
+        this.defaultLabels = [...this.defaultLabels, value]
+        this.labelsNotAllowed = this.labelsNotAllowed.filter(elem => elem !== value)
+      } else {
+        this.defaultLabels = this.defaultLabels.filter(elem => elem !== value)
+      }
+      this.ymlCompile('defaultLabels')
+    },
     toggleLabel (value) {
       if (this.isAllowed(value)) {
         this.$set(this.labelsSynonyms, value, undefined)
+        this.defaultLabels = this.defaultLabels.filter(elem => elem !== value)
         this.ymlCompile('labelsSynonyms')
         this.labelsNotAllowed = [...this.labelsNotAllowed, value]
       } else {
@@ -179,6 +203,9 @@ export default {
     },
     isAllowed (value) {
       return !this.labelsNotAllowed.some(elem => elem === value)
+    },
+    isDefault (value) {
+      return this.defaultLabels.some(elem => elem === value)
     },
     async searchLabels () {
       try {
@@ -197,14 +224,26 @@ export default {
       }
     },
     ymlCompile (field) {
-      this.$set(this.compiled, field, JSON.stringify(this[field]))
+      this.$set(this.compiled, field, JSON.stringify(this[field]).replace(/'/g, '\'\''))
     }
   },
   watch: {
-    label (value) {
+    label (value, lastValue) {
       if (value === '') {
+        if (this.isDefault(lastValue)) {
+          this.defaultLabels = this.defaultLabels.filter(elem => elem !== lastValue)
+        }
+        if (!this.isAllowed(lastValue)) {
+          this.labelsNotAllowed = this.labelsNotAllowed.filter(elem => elem !== lastValue)
+        }
         this.ymlCompile('labelsSynonyms')
       }
+    },
+    labelsNotAllowed () {
+      this.ymlCompile('labelsNotAllowed')
+    },
+    defaultLabels () {
+      this.ymlCompile('defaultLabels')
     }
   },
   computed: {
@@ -214,13 +253,22 @@ export default {
         types: this.types,
         ignoreComments: this.ignoreComments,
         labelsSynonyms: this.compiled.labelsSynonyms,
-        labelsNotAllowed: this.compiled.labelsNotAllowed
+        labelsNotAllowed: this.compiled.labelsNotAllowed,
+        defaultLabels: this.compiled.defaultLabels
       }
     }
   },
   mounted () {
     this.ymlCompile('labelsSynonyms')
     this.ymlCompile('labelsNotAllowed')
+    this.ymlCompile('defaultLabels')
   }
 }
 </script>
+
+<style>
+/* hotfix */
+.v-icon.notranslate.mdi.mdi-checkbox-marked.theme--light{
+  color:#1975d2
+}
+</style>
