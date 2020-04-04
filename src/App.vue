@@ -32,6 +32,7 @@ export default {
     LocaleChange
   },
   mounted () {
+    if (this.$route.query.lang) this.$i18n.locale = this.$route.query.lang
     document.dispatchEvent(new Event('render-event'))
   }
 }

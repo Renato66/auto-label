@@ -54,6 +54,7 @@ export default {
   methods: {
     selectLocale (value) {
       this.$i18n.locale = value
+      this.$router.replace({ query: { lang: value } })
     }
   }
 }
