@@ -207,19 +207,89 @@ export default {
     isDefault (value) {
       return this.defaultLabels.some(elem => elem === value)
     },
+    async getIssueYml () {
+      try {
+        const response = await fetch(`https://raw.githubusercontent.com/${this.repo}/master/.github/workflows/issue.yml`)
+        if (response.ok) { // if HTTP-status is 200-299
+          const text = await response.text()
+          const secretSet = (elem, line) => {
+            if (line.includes(elem.text)) {
+              this.$set(this, elem.field, line.split(': {{ secrets.')[1].split(' }}')[0])
+              return false
+            }
+            return true
+          }
+          const stringSet = (elem, line) => {
+            if (line.includes(elem.text)) {
+              this.$set(this, elem.field, line.split(': ')[1])
+              return false
+            }
+            return true
+          }
+          const jsonSet = (elem, line) => {
+            if (line.includes(elem.text)) {
+              let str = line.split(': ')[1]
+              this.$set(this, elem.field, JSON.parse(str.substring(1, str.length - 1)))
+              return false
+            }
+            return true
+          }
+          let fields = [
+            {
+              text: 'types:',
+              field: 'types',
+              setFunction: stringSet
+            },
+            {
+              text: 'repo-token:',
+              field: 'secret',
+              setFunction: secretSet
+            },
+            {
+              text: 'labels-synonyms:',
+              field: 'labelsSynonyms',
+              setFunction: jsonSet
+            },
+            {
+              text: 'labels-not-allowed:',
+              field: 'labelsNotAllowed',
+              setFunction: jsonSet
+            },
+            {
+              text: 'default-labels:',
+              field: 'defaultLabels',
+              setFunction: jsonSet
+            }
+          ]
+
+          text.split('\n').forEach(line => {
+            fields = fields.filter(elem => elem.setFunction(elem, line))
+          })
+        } else {
+          console.log('not found')
+        }
+      } catch (error) {
+        console.log(error)
+        alert(this.$t('repo.error'))
+      }
+    },
     async searchLabels () {
       try {
-        console.log(this.repo.split('').length)
+        this.loading = true
         if (this.labelList.length !== 0) return
         if (this.repo.split('/').length !== 2) return
         const response = await fetch(`https://api.github.com/repos/${this.repo}/labels`)
         if (response.ok) { // if HTTP-status is 200-299
           const list = await response.json()
           this.labelList = list
+          await this.getIssueYml()
+          this.loading = false
         } else {
           throw new Error(response.status)
         }
       } catch (error) {
+        this.loading = false
+        console.log(error)
         alert(this.$t('repo.error'))
       }
     },
