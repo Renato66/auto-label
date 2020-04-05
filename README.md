@@ -24,9 +24,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: Renato66/auto-label@2.1.0
+      - uses: Renato66/auto-label@2.1.1
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+          ignore-comments: true
           labels-synonyms: '{"bug":["error","need fix","not working"],"enhancement":["upgrade"],"question":["help"]}'
           labels-not-allowed: '["good first issue"]'
           default-labels: '["help wanted"]'
