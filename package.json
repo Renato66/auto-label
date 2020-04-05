@@ -23,6 +23,11 @@
   "bugs": {
     "url": "https://github.com/actions/container-toolkit-template/issues"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
   "homepage": "https://github.com/actions/container-toolkit-template#readme",
   "dependencies": {
     "@actions/core": "^1.2.3",
@@ -32,10 +37,12 @@
   "devDependencies": {
     "@types/jest": "^24.0.13",
     "@types/node": "^12.0.4",
+    "husky": "^4.2.3",
     "jest": "^24.8.0",
     "jest-circus": "^24.7.1",
     "nock": "^11.7.1",
-    "prettier": "^1.17.1",
+    "prettier": "2.0.2",
+    "pretty-quick": "^2.0.1",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.1"
   }
