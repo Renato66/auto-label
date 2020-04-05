@@ -1,7 +1,7 @@
 import * as core from '@actions/core'
 import * as github from '@actions/github'
-import { getIssueLabels } from './functions'
-const { getRepoLabels, addLabels } = require('./github')
+import {getIssueLabels} from './functions'
+const {getRepoLabels, addLabels} = require('./github')
 
 export async function run() {
   try {
@@ -19,15 +19,15 @@ export async function run() {
     console.log('Reading labels in issue...')
     const issueLabels: string[] = getIssueLabels(issue.body, repoLabels)
     console.log(`Labels found: ${issueLabels.length}`)
-    
-    if (issueLabels.length !== 0 ) {
+
+    if (issueLabels.length !== 0) {
       console.log('Adding labels to issue...')
       await addLabels(client, issue.number, issueLabels)
     }
     console.log('Done')
   } catch (error) {
     core.setFailed(error.message)
-    throw error;
+    throw error
   }
 }
 

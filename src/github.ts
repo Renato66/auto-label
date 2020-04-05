@@ -1,4 +1,4 @@
-import { getLabelsNotAllowed } from './functions'
+import {getLabelsNotAllowed} from './functions'
 import * as github from '@actions/github'
 
 const getRepoLabels: Function = async (client: any) => {
@@ -7,16 +7,24 @@ const getRepoLabels: Function = async (client: any) => {
     owner: github.context.repo.owner,
     repo: github.context.repo.repo
   })
-  return list.map((elem: any) => {
-    return elem.name
-  }).filter((elem: string) => {
-    return labelsNotAllowed.find((label: string) => {
-      return label.toLowerCase() === elem.toLowerCase()
-    }) === undefined
-  })
+  return list
+    .map((elem: any) => {
+      return elem.name
+    })
+    .filter((elem: string) => {
+      return (
+        labelsNotAllowed.find((label: string) => {
+          return label.toLowerCase() === elem.toLowerCase()
+        }) === undefined
+      )
+    })
 }
 
-const addLabels: Function = async (client: any, issueNumber: number, labels: string[]) => {
+const addLabels: Function = async (
+  client: any,
+  issueNumber: number,
+  labels: string[]
+) => {
   await client.issues.addLabels({
     owner: github.context.repo.owner,
     repo: github.context.repo.repo,
@@ -24,7 +32,4 @@ const addLabels: Function = async (client: any, issueNumber: number, labels: str
     labels: labels
   })
 }
-export {
-  getRepoLabels,
-  addLabels
-}
+export {getRepoLabels, addLabels}

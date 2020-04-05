@@ -1,40 +1,57 @@
 import * as core from '@actions/core'
 
 const escapeRegExp: Function = (string: String): String => {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') // $& means the whole matched string
 }
 
 const compareLabels: Function = (labels: string[]): Function => {
   const labelsSynonyms = getLabelsSynonyms()
   const hasSynonyms = Object.keys(labelsSynonyms).length !== 0
   if (hasSynonyms) {
-    const labelsRegex = new RegExp(labels.map(elem => {
-      if (labelsSynonyms[elem] === undefined) {
-        return `\\b${escapeRegExp(elem)}\\b`
-      } else {
-        return [elem, ...labelsSynonyms[elem]].map(synonym => `\\b${escapeRegExp(synonym)}\\b`).join('|')
-      }
-    }).join('|'), 'gi')
+    const labelsRegex = new RegExp(
+      labels
+        .map(elem => {
+          if (labelsSynonyms[elem] === undefined) {
+            return `\\b${escapeRegExp(elem)}\\b`
+          } else {
+            return [elem, ...labelsSynonyms[elem]]
+              .map(synonym => `\\b${escapeRegExp(synonym)}\\b`)
+              .join('|')
+          }
+        })
+        .join('|'),
+      'gi'
+    )
     let synonymsObject: Object = {}
     for (let label in labelsSynonyms) {
-       labelsSynonyms[label].forEach(synonym => {
+      labelsSynonyms[label].forEach(synonym => {
         synonymsObject[synonym] = label
       })
     }
     const hasLabels = (line: string): string[] => {
       const selectedLabels = line.match(labelsRegex) || []
       return selectedLabels.map(elem => {
-        return synonymsObject[elem] || labels.find(label => label.toLowerCase() === elem.toLowerCase()) || elem
-      }) 
+        return (
+          synonymsObject[elem] ||
+          labels.find(label => label.toLowerCase() === elem.toLowerCase()) ||
+          elem
+        )
+      })
     }
     return hasLabels
   } else {
-    const labelsRegex = new RegExp(labels.map(elem => `\\b${escapeRegExp(elem)}\\b`).join('|'), 'gi')
+    const labelsRegex = new RegExp(
+      labels.map(elem => `\\b${escapeRegExp(elem)}\\b`).join('|'),
+      'gi'
+    )
     const hasLabels = (line: string): string[] => {
       const selectedLabels = line.match(labelsRegex) || []
       return selectedLabels.map(elem => {
-        return labels.find(label => label.toLowerCase() === elem.toLowerCase()) || elem
-      }) 
+        return (
+          labels.find(label => label.toLowerCase() === elem.toLowerCase()) ||
+          elem
+        )
+      })
     }
     return hasLabels
   }
@@ -59,19 +76,27 @@ const getIssueLabels: Function = (body: string, labels: string[]): string[] => {
 }
 
 const getLabelsNotAllowed: Function = (): string[] => {
-  return core.getInput('labels-not-allowed') ? JSON.parse(core.getInput('labels-not-allowed')) : []
+  return core.getInput('labels-not-allowed')
+    ? JSON.parse(core.getInput('labels-not-allowed'))
+    : []
 }
 
 const getLabelsSynonyms: Function = (): unknown => {
-  return core.getInput('labels-synonyms') ? JSON.parse(core.getInput('labels-synonyms')) : {}
+  return core.getInput('labels-synonyms')
+    ? JSON.parse(core.getInput('labels-synonyms'))
+    : {}
 }
 
 const getIgnoreComments: Function = (): boolean => {
-  return core.getInput('ignore-comments') ? core.getInput('ignore-comments') === 'true' : true
+  return core.getInput('ignore-comments')
+    ? core.getInput('ignore-comments') === 'true'
+    : true
 }
 
 const getDefaultLabels: Function = (): boolean => {
-  return core.getInput('default-labels') ? JSON.parse(core.getInput('default-labels')) : []
+  return core.getInput('default-labels')
+    ? JSON.parse(core.getInput('default-labels'))
+    : []
 }
 
 export {
