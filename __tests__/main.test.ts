@@ -19,7 +19,7 @@ describe('Testing action functionalitie', () => {
 
     nock('https://api.github.com')
       .persist()
-      .get(`/repos/${fakeRepo}/labels`)
+      .get(`/repos/${fakeRepo}/labels?per_page=100&page=1`)
       .reply(200, labelsList)
     nock('https://api.github.com')
       .persist()
