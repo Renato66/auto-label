@@ -2,6 +2,9 @@
 
 ![Unit test](https://github.com/Renato66/auto-label/workflows/Unit%20test/badge.svg)
 
+
+![image](https://user-images.githubusercontent.com/9284273/79672530-57c1db80-81a9-11ea-900c-3b4f73984e0a.png)
+
 The Auto label action will check for every new issue and automatically adds a label based on the body of the issue. This means that finding specifc issues will be much more easy.
 
 ## Creating
