@@ -1,5 +1,4 @@
 import nock from 'nock'
-import * as path from 'path'
 import * as github from '@actions/github'
 import {getRepoLabels, addLabels} from '../src/github'
 
@@ -11,7 +10,7 @@ describe('Testing compareLabels function', () => {
     const labelsList = require(`./__mock__/${fakeRepo}/labels.json`)
     nock('https://api.github.com')
       .persist()
-      .get(`/repos/${fakeRepo}/labels`)
+      .get(`/repos/${fakeRepo}/labels?per_page=100&page=1`)
       .reply(200, labelsList)
 
     const client = new github.GitHub('fakeToken')
@@ -25,7 +24,7 @@ describe('Testing compareLabels function', () => {
     const labelsList = require(`./__mock__/${fakeRepo}/labels.json`)
     nock('https://api.github.com')
       .persist()
-      .get(`/repos/${fakeRepo}/labels`)
+      .get(`/repos/${fakeRepo}/labels?per_page=100&page=1`)
       .reply(200, labelsList)
 
     const client = new github.GitHub('fakeToken')
@@ -39,7 +38,7 @@ describe('Testing compareLabels function', () => {
     const labelsList = require(`./__mock__/${fakeRepo}/labels.json`)
     nock('https://api.github.com')
       .persist()
-      .get(`/repos/${fakeRepo}/labels`)
+      .get(`/repos/${fakeRepo}/labels?per_page=100&page=1`)
       .reply(200, labelsList)
 
     const client = new github.GitHub('fakeToken')

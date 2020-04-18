@@ -4,8 +4,6 @@
 
 The Auto label action will check for every new issue and automatically adds a label based on the body of the issue. This means that finding specifc issues will be much more easy.
 
-
-
 ## Creating
 
 Check out the app to make yml file
@@ -19,12 +17,12 @@ add a file to `.github/workflows/issue.yml`
 name: Labeling new issue
 on:
   issues:
-      types: ['opened']
+    types: ['opened']
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: Renato66/auto-label@2.1.1
+      - uses: Renato66/auto-label@v2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           ignore-comments: true
@@ -32,4 +30,3 @@ jobs:
           labels-not-allowed: '["good first issue"]'
           default-labels: '["help wanted"]'
 ```
-
