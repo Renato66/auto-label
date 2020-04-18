@@ -17,7 +17,7 @@
     "userToken": "Sua conta do github",
     "details": {
       "GITHUB_TOKEN": "O repositório irá providenciar um token de accesso para adicionar labels automaticamente",
-      "GITHUB_USER_TOKEN": "Você precisará gerar um token de usuário, mais informações <a href='https://help.github.com/pt/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line' target='_blank'>aqui</a>, e precisará adicionar o token como um secret no repositório mais informações <a href='https://help.github.com/pt/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets' target='_blank'>aqui</a>"
+      "GITHUB_USER_TOKEN": "Você precisará gerar um token de usuário com escopo <code>[public_repo]</code> mais informações <a href='https://help.github.com/pt/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line' target='_blank'>aqui</a>, e precisará adicionar o token como um secret no repositório mais informações <a href='https://help.github.com/pt/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets' target='_blank'>aqui</a>"
     }
   },
   "ignoreComments": {
