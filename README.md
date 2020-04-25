@@ -1,7 +1,7 @@
 # Auto-label
 
 ![Unit test](https://github.com/Renato66/auto-label/workflows/Unit%20test/badge.svg)
-
+[![Auto Label](https://github.com/Renato66/auto-label/workflows/Labeling%20new%20issue/badge.svg)](https://github.com/Renato66/auto-label)
 
 ![image](https://user-images.githubusercontent.com/9284273/79672530-57c1db80-81a9-11ea-900c-3b4f73984e0a.png)
 
@@ -90,4 +90,15 @@ Labels that will always be set when a issue is created/updated such as `triage`,
 
 ```
 default-labels: '["triage"]'
+```
+
+## Badge
+
+To add a badge simple replace owner and repository
+<!-- Replace <OWNER> and <REPOSITORY>. It assumes workflow name is "Labeling%20new%20issue" -->
+[![Auto Label](https://github.com/Renato66/auto-label/workflows/Labeling%20new%20issue/badge.svg)](https://github.com/Renato66/auto-label)
+
+```
+<!-- Replace <OWNER> and <REPOSITORY>. It assumes workflow name is "Labeling%20new%20issue" -->
+[![Auto Label](https://github.com/<OWNER>/<REPOSITORY>/workflows/Labeling%20new%20issue/badge.svg)](https://github.com/Renato66/auto-label)
 ```
