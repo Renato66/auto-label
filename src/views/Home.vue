@@ -287,22 +287,28 @@ export default {
     },
     async searchLabels () {
       try {
+        let hasMorePages = false
+        let page = 1
         this.loading = true
         if (this.labelList.length !== 0) return
         if (this.repo.split('/').length !== 2) return
-        const response = await fetch(`https://api.github.com/repos/${this.repo}/labels`)
-        if (response.ok) { // if HTTP-status is 200-299
-          const list = await response.json()
-          this.labelList = list
-          await this.getIssueYml()
-          this.loading = false
-        } else {
-          throw new Error(response.status)
-        }
+        do {
+          const response = await fetch(`https://api.github.com/repos/${this.repo}/labels?per_page=100&page=${page}`)
+          if (response.ok) { // if HTTP-status is 200-299
+            const list = await response.json()
+            this.labelList = [...this.labelList, ...list]
+            hasMorePages = list.length === 100
+            page++
+          } else {
+            throw new Error(response.status)
+          }
+        } while (hasMorePages)
+        await this.getIssueYml()
       } catch (error) {
-        this.loading = false
         console.log(error)
         alert(this.$t('repo.error'))
+      } finally {
+        this.loading = false
       }
     },
     ymlCompile (field) {
