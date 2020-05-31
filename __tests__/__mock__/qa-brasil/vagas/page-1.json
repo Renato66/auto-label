@@ -1,0 +1,371 @@
+[
+  {
+    "id": 1789351091,
+    "node_id": "MDU6TGFiZWwxNzg5MzUxMDkx",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Acre",
+    "name": "Acre",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789351559,
+    "node_id": "MDU6TGFiZWwxNzg5MzUxNTU5",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Alagoas",
+    "name": "Alagoas",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789366686,
+    "node_id": "MDU6TGFiZWwxNzg5MzY2Njg2",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Alocado",
+    "name": "Alocado",
+    "color": "e587d2",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789351954,
+    "node_id": "MDU6TGFiZWwxNzg5MzUxOTU0",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Amap%C3%A1",
+    "name": "Amapá",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789353152,
+    "node_id": "MDU6TGFiZWwxNzg5MzUzMTUy",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Amazonas",
+    "name": "Amazonas",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789353589,
+    "node_id": "MDU6TGFiZWwxNzg5MzUzNTg5",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Bahia",
+    "name": "Bahia",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789353840,
+    "node_id": "MDU6TGFiZWwxNzg5MzUzODQw",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Bras%C3%ADlia",
+    "name": "Brasília",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789349552,
+    "node_id": "MDU6TGFiZWwxNzg5MzQ5NTUy",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/CLT",
+    "name": "CLT",
+    "color": "d93f0b",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789354300,
+    "node_id": "MDU6TGFiZWwxNzg5MzU0MzAw",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Cear%C3%A1",
+    "name": "Ceará",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789354654,
+    "node_id": "MDU6TGFiZWwxNzg5MzU0NjU0",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Distrito%20Federal",
+    "name": "Distrito Federal",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789367536,
+    "node_id": "MDU6TGFiZWwxNzg5MzY3NTM2",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Especialista",
+    "name": "Especialista",
+    "color": "460e87",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789355159,
+    "node_id": "MDU6TGFiZWwxNzg5MzU1MTU5",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Esp%C3%ADrito%20Santo",
+    "name": "Espírito Santo",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789367839,
+    "node_id": "MDU6TGFiZWwxNzg5MzY3ODM5",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Est%C3%A1gio",
+    "name": "Estágio",
+    "color": "c43846",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789368506,
+    "node_id": "MDU6TGFiZWwxNzg5MzY4NTA2",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Exterior",
+    "name": "Exterior",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789369200,
+    "node_id": "MDU6TGFiZWwxNzg5MzY5MjAw",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Freela",
+    "name": "Freela",
+    "color": "a7d5ef",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789355718,
+    "node_id": "MDU6TGFiZWwxNzg5MzU1NzE4",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Goi%C3%A1s",
+    "name": "Goiás",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 2059047690,
+    "node_id": "MDU6TGFiZWwyMDU5MDQ3Njkw",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Ingl%C3%AAs",
+    "name": "Inglês",
+    "color": "924ac9",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789369591,
+    "node_id": "MDU6TGFiZWwxNzg5MzY5NTkx",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/J%C3%BAnior",
+    "name": "Júnior",
+    "color": "9bf2c6",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789356227,
+    "node_id": "MDU6TGFiZWwxNzg5MzU2MjI3",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Maranh%C3%A3o",
+    "name": "Maranhão",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789357059,
+    "node_id": "MDU6TGFiZWwxNzg5MzU3MDU5",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Mato%20Grosso",
+    "name": "Mato Grosso",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789356702,
+    "node_id": "MDU6TGFiZWwxNzg5MzU2NzAy",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Mato%20Grosso%20do%20Sul",
+    "name": "Mato Grosso do Sul",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789357318,
+    "node_id": "MDU6TGFiZWwxNzg5MzU3MzE4",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Minas%20Gerais",
+    "name": "Minas Gerais",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789360486,
+    "node_id": "MDU6TGFiZWwxNzg5MzYwNDg2",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/PJ",
+    "name": "PJ",
+    "color": "87ea7c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789358604,
+    "node_id": "MDU6TGFiZWwxNzg5MzU4NjA0",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Paran%C3%A1",
+    "name": "Paraná",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789357995,
+    "node_id": "MDU6TGFiZWwxNzg5MzU3OTk1",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Para%C3%ADba",
+    "name": "Paraíba",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789357699,
+    "node_id": "MDU6TGFiZWwxNzg5MzU3Njk5",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Par%C3%A1",
+    "name": "Pará",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789371313,
+    "node_id": "MDU6TGFiZWwxNzg5MzcxMzEz",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Pendente%20de%20Informa%C3%A7%C3%B5es",
+    "name": "Pendente de Informações",
+    "color": "fff6b7",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789359073,
+    "node_id": "MDU6TGFiZWwxNzg5MzU5MDcz",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Pernambuco",
+    "name": "Pernambuco",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789359582,
+    "node_id": "MDU6TGFiZWwxNzg5MzU5NTgy",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Piau%C3%AD",
+    "name": "Piauí",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789361242,
+    "node_id": "MDU6TGFiZWwxNzg5MzYxMjQy",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Pleno",
+    "name": "Pleno",
+    "color": "edd342",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789361554,
+    "node_id": "MDU6TGFiZWwxNzg5MzYxNTU0",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Remoto",
+    "name": "Remoto",
+    "color": "14e89a",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789363179,
+    "node_id": "MDU6TGFiZWwxNzg5MzYzMTc5",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Rio%20Grande%20do%20Norte",
+    "name": "Rio Grande do Norte",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789362259,
+    "node_id": "MDU6TGFiZWwxNzg5MzYyMjU5",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Rio%20Grande%20do%20Sul",
+    "name": "Rio Grande do Sul",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789362694,
+    "node_id": "MDU6TGFiZWwxNzg5MzYyNjk0",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Rio%20de%20Janeiro",
+    "name": "Rio de Janeiro",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789363588,
+    "node_id": "MDU6TGFiZWwxNzg5MzYzNTg4",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Rond%C3%B4nia",
+    "name": "Rondônia",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789363923,
+    "node_id": "MDU6TGFiZWwxNzg5MzYzOTIz",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Roraima",
+    "name": "Roraima",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789364836,
+    "node_id": "MDU6TGFiZWwxNzg5MzY0ODM2",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Santa%20Catarina",
+    "name": "Santa Catarina",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789365218,
+    "node_id": "MDU6TGFiZWwxNzg5MzY1MjE4",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Sergipe",
+    "name": "Sergipe",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789364382,
+    "node_id": "MDU6TGFiZWwxNzg5MzY0Mzgy",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/S%C3%A3o%20Paulo",
+    "name": "São Paulo",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789365961,
+    "node_id": "MDU6TGFiZWwxNzg5MzY1OTYx",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/S%C3%AAnior",
+    "name": "Sênior",
+    "color": "eab6a1",
+    "default": false,
+    "description": ""
+  },
+  {
+    "id": 1789365538,
+    "node_id": "MDU6TGFiZWwxNzg5MzY1NTM4",
+    "url": "https://api.github.com/repos/qa-brasil/vagas/labels/Tocantins",
+    "name": "Tocantins",
+    "color": "9e194c",
+    "default": false,
+    "description": ""
+  }
+]
