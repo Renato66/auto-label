@@ -120,7 +120,7 @@
                       </v-expand-transition>
                       {{label.name}}
                       <span class="ml-1 caption primary--text" v-if="isDefault(label.name)">({{ $t('labels.default.text') }})</span>
-                      <span class="ml-1 caption primary--text" v-if="labelsSynonyms[label.name]">({{ $t('labels.synonyms.text', labelsSynonyms[label.name].length) }})</span>
+                      <span class="ml-1 caption primary--text" v-if="labelsSynonyms[label.name]">({{ $tc('labels.synonyms.text', labelsSynonyms[label.name].length) }})</span>
                     </div>
                   </v-hover>
                 </template>
