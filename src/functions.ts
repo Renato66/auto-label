@@ -25,14 +25,16 @@ const compareLabels: Function = (labels: string[]): Function => {
     let synonymsObject: Object = {}
     for (let label in labelsSynonyms) {
       labelsSynonyms[label].forEach(synonym => {
-        synonymsObject[synonym] = label
+        synonymsObject[synonym.toLowerCase()] = label
       })
     }
+    console.log(synonymsObject)
     const hasLabels = (line: string): string[] => {
       const selectedLabels = line.match(labelsRegex) || []
       return selectedLabels.map(elem => {
+        console.log('aqui', elem)
         return (
-          synonymsObject[elem] ||
+          synonymsObject[elem.toLowerCase()] ||
           labels.find(label => label.toLowerCase() === elem.toLowerCase()) ||
           elem
         )
