@@ -2,6 +2,7 @@
 
 ![Unit test](https://github.com/Renato66/auto-label/workflows/Unit%20test/badge.svg)
 [![Auto Label](https://github.com/Renato66/auto-label/workflows/Labeling%20new%20issue/badge.svg)](https://github.com/Renato66/auto-label)
+[![codecov](https://codecov.io/gh/Renato66/auto-label/branch/master/graph/badge.svg)](https://codecov.io/gh/Renato66/auto-label)
 
 ![image](https://user-images.githubusercontent.com/9284273/79672530-57c1db80-81a9-11ea-900c-3b4f73984e0a.png)
 
@@ -36,22 +37,24 @@ jobs:
 
 ## Inputs
 
-| Name | Description | Required | Default | Examples |
-| --- | --- | --- | --- |:---:|
-| repo-token | Github token for the repository | true | - |  [...](#repo-token) |
-| ignore-comments | Ignore labels inside issue comments | false | true |  [...](#ignore-comments) |
-| labels-synonyms | Text synonyms for labels | false | - |  [...](#labels-synonyms) |
-| labels-not-allowed | Labels to ignore | false | - |  [...](#labels-not-allowed) |
-| default-labels | Labels that will always be set | false | - |  [...](#default-labels) |
+| Name               | Description                         | Required | Default |          Examples          |
+| ------------------ | ----------------------------------- | -------- | ------- | :------------------------: |
+| repo-token         | Github token for the repository     | true     | -       |     [...](#repo-token)     |
+| ignore-comments    | Ignore labels inside issue comments | false    | true    |  [...](#ignore-comments)   |
+| labels-synonyms    | Text synonyms for labels            | false    | -       |  [...](#labels-synonyms)   |
+| labels-not-allowed | Labels to ignore                    | false    | -       | [...](#labels-not-allowed) |
+| default-labels     | Labels that will always be set      | false    | -       |   [...](#default-labels)   |
 
 ### Repo Token
 
-Repo token is provided automaticly by github just need to add 
+Repo token is provided automaticly by github just need to add
+
 ```
 repo-token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 #### Change bot apperance
+
 If you want to change who added the labels, you can provide a user token
 
 ![image](https://user-images.githubusercontent.com/9284273/79672221-678bf080-81a6-11ea-908e-fb875772121a.png)
@@ -72,6 +75,7 @@ But if you prefer to set it as false, the author can set the labels inside a com
 ### Labels Synonyms
 
 Sometimes labels can be set uppon other texts, as an example, if you have a label like `C: VCombobox` it would be hard to match the label in a normal issue, but you can provide a JSON to set it synonyms:
+
 ```
 labels-synonyms: '{"C: VCombobox":["combobox","v-combobox","combo box"]}'
 ```
@@ -95,7 +99,9 @@ default-labels: '["triage"]'
 ## Badge
 
 To add a badge simple replace owner and repository
+
 <!-- Replace <OWNER> and <REPOSITORY>. It assumes workflow name is "Labeling%20new%20issue" -->
+
 [![Auto Label](https://github.com/Renato66/auto-label/workflows/Labeling%20new%20issue/badge.svg)](https://github.com/Renato66/auto-label)
 
 ```
