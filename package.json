@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "format": "prettier --write **/*.ts",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "jest --collect-coverage"
   },
   "repository": {
     "type": "git",
