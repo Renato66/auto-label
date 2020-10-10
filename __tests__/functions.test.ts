@@ -89,6 +89,53 @@ describe('Testing compareLabels function', () => {
 })
 
 describe('Testing getIssueLabels function', () => {
+  const autoLabelTestCases = [
+    [
+      `Bahia
+        <!-- AUTO-LABEL:START -->
+        Minas Gerais
+        <!-- AUTO-LABEL:END -->
+        Santa Catarina
+      `,
+      ['Minas Gerais']
+    ],
+    [
+      `<!-- AUTO-LABEL:START -->
+        Bahia
+        <!-- AUTO-LABEL:END -->
+        Minas Gerais
+        <!-- AUTO-LABEL:START -->
+        Santa Catarina
+        <!-- AUTO-LABEL:END -->
+      `,
+      ['Bahia', 'Santa Catarina']
+    ],
+    [
+      `<!-- AUTO-LABEL:END -->
+        <!-- AUTO-LABEL:START -->
+        Bahia
+        <!-- AUTO-LABEL:END -->
+        Minas Gerais
+        <!-- AUTO-LABEL:START -->
+        Santa Catarina
+        <!-- AUTO-LABEL:END -->
+      `,
+      ['Bahia', 'Santa Catarina']
+    ],
+    [
+      `<!-- AUTO-LABEL:START -->
+        Bahia
+        <!-- AUTO-LABEL:END -->
+        Minas Gerais
+        <!-- AUTO-LABEL:START -->
+        Santa Catarina
+        <!-- AUTO-LABEL:END -->
+        <!-- AUTO-LABEL:START -->
+      `,
+      ['Bahia', 'Santa Catarina']
+    ]
+  ]
+
   it('should `new` label', async () => {
     process.env['INPUT_IGNORE-COMMENTS'] = 'false'
     const body = `Testing new feature
@@ -121,6 +168,14 @@ describe('Testing getIssueLabels function', () => {
     const labels = ['bug', 'test', 'new']
     expect(getIssueLabels(body, labels)).toStrictEqual(['bug'])
   })
+
+  test.each(autoLabelTestCases)(
+    'it should return the expected auto labels',
+    (body, expectedAutoLabels) => {
+      const labels = ['Bahia', 'Santa Catarina', 'Minas Gerais']
+      expect(getIssueLabels(body, labels)).toEqual(expectedAutoLabels)
+    }
+  )
 })
 
 describe('Testing getLabelsNotAllowed function', () => {
