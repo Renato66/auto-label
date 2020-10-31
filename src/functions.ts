@@ -28,7 +28,6 @@ const compareLabels: Function = (labels: string[]): Function => {
         synonymsObject[synonym.toLowerCase()] = label
       })
     }
-    console.log(synonymsObject)
     const hasLabels = (line: string): string[] => {
       const selectedLabels = line.match(labelsRegex) || []
       return selectedLabels.map(elem => {
