@@ -89,7 +89,40 @@ describe('Testing compareLabels function', () => {
 })
 
 describe('Testing getIssueLabels function', () => {
-  const autoLabelTestCases = [
+  it('should `new` label', async () => {
+    process.env['INPUT_IGNORE-COMMENTS'] = 'false'
+    const body = `Testing new feature
+    not buggy
+    at all... <!-- attention -->`
+    const labels = ['bug', 'test', 'new']
+    expect(getIssueLabels(body, labels)).toStrictEqual(['new'])
+  })
+
+  it('should not add `new` label', async () => {
+    const labels = ['bug', 'test', 'new']
+    const body = `There is an error on system a \r\n\r\n\r\n **VAGA PROGRAMADOR ANGULAR/.NET –n\r\n\r\n <!-- new -->`
+    const body2 = `There is an error on system a \r\n\r\n\r\n **VAGA PROGRAMADOR ANGULAR/.NET –n\r\n\r\n <!--\n\n restes\n new \n-->`
+    const body3 = `There is an bug on system a \r\n\r\n\r\n **VAGA PROGRAMADOR ANGULAR/.NET –n\r\n\r\n <!--\n\n restes\n new \n-->`
+    expect(getIssueLabels(body, labels)).toStrictEqual([])
+    expect(getIssueLabels(body2, labels)).toStrictEqual([])
+    expect(getIssueLabels(body3, labels)).toStrictEqual(['bug'])
+  })
+
+  it('should return default label', async () => {
+    process.env['INPUT_DEFAULT-LABELS'] = `["triage"]`
+    const body = `There is an error on system a \r\n\r\n\r\n **VAGA PROGRAMADOR ANGULAR/.NET –n\r\n\r\n <!-- new -->`
+    const labels = ['bug', 'test', 'new', 'triage']
+    expect(getIssueLabels(body, labels)).toStrictEqual(['triage'])
+  })
+
+  it('should return bug as text `error` is a synonym', async () => {
+    process.env['INPUT_LABELS-SYNONYMS'] = `{"bug":["error"]}`
+    const body = `There is an error on system a \r\n\r\n\r\n **VAGA PROGRAMADOR ANGULAR/.NET –n\r\n\r\n <!-- new -->`
+    const labels = ['bug', 'test', 'new']
+    expect(getIssueLabels(body, labels)).toStrictEqual(['bug'])
+  })
+
+  test.each([
     [
       `Bahia
         <!-- AUTO-LABEL:START -->
@@ -134,42 +167,7 @@ describe('Testing getIssueLabels function', () => {
       `,
       ['Bahia', 'Santa Catarina']
     ]
-  ]
-
-  it('should `new` label', async () => {
-    process.env['INPUT_IGNORE-COMMENTS'] = 'false'
-    const body = `Testing new feature
-    not buggy
-    at all... <!-- attention -->`
-    const labels = ['bug', 'test', 'new']
-    expect(getIssueLabels(body, labels)).toStrictEqual(['new'])
-  })
-
-  it('should not add `new` label', async () => {
-    const labels = ['bug', 'test', 'new']
-    const body = `There is an error on system a \r\n\r\n\r\n **VAGA PROGRAMADOR ANGULAR/.NET –n\r\n\r\n <!-- new -->`
-    const body2 = `There is an error on system a \r\n\r\n\r\n **VAGA PROGRAMADOR ANGULAR/.NET –n\r\n\r\n <!--\n\n restes\n new \n-->`
-    const body3 = `There is an bug on system a \r\n\r\n\r\n **VAGA PROGRAMADOR ANGULAR/.NET –n\r\n\r\n <!--\n\n restes\n new \n-->`
-    expect(getIssueLabels(body, labels)).toStrictEqual([])
-    expect(getIssueLabels(body2, labels)).toStrictEqual([])
-    expect(getIssueLabels(body3, labels)).toStrictEqual(['bug'])
-  })
-
-  it('should return default label', async () => {
-    process.env['INPUT_DEFAULT-LABELS'] = `["triage"]`
-    const body = `There is an error on system a \r\n\r\n\r\n **VAGA PROGRAMADOR ANGULAR/.NET –n\r\n\r\n <!-- new -->`
-    const labels = ['bug', 'test', 'new', 'triage']
-    expect(getIssueLabels(body, labels)).toStrictEqual(['triage'])
-  })
-
-  it('should return bug as text `error` is a synonym', async () => {
-    process.env['INPUT_LABELS-SYNONYMS'] = `{"bug":["error"]}`
-    const body = `There is an error on system a \r\n\r\n\r\n **VAGA PROGRAMADOR ANGULAR/.NET –n\r\n\r\n <!-- new -->`
-    const labels = ['bug', 'test', 'new']
-    expect(getIssueLabels(body, labels)).toStrictEqual(['bug'])
-  })
-
-  test.each(autoLabelTestCases)(
+  ])(
     'it should return the expected auto labels',
     (body, expectedAutoLabels) => {
       const labels = ['Bahia', 'Santa Catarina', 'Minas Gerais']
