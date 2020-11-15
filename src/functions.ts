@@ -28,11 +28,9 @@ const compareLabels: Function = (labels: string[]): Function => {
         synonymsObject[synonym.toLowerCase()] = label
       })
     }
-    console.log(synonymsObject)
     const hasLabels = (line: string): string[] => {
       const selectedLabels = line.match(labelsRegex) || []
       return selectedLabels.map(elem => {
-        console.log('aqui', elem)
         return (
           synonymsObject[elem.toLowerCase()] ||
           labels.find(label => label.toLowerCase() === elem.toLowerCase()) ||
@@ -59,17 +57,35 @@ const compareLabels: Function = (labels: string[]): Function => {
   }
 }
 
+const parseAutoLabel = (body: string): string => {
+  const autoLabelRegex = new RegExp(
+    /<!-- AUTO-LABEL:START -->(?<label>(\s*\w.+|\n)*?)\s*<!-- AUTO-LABEL:END -->/,
+    'gm'
+  )
+  const autoLabels = body.match(autoLabelRegex)
+
+  if (!autoLabels) return body
+
+  const replaceAutoLabelByLabelValue = autoLabel =>
+    autoLabel.replace(autoLabelRegex, '$1').trim()
+
+  return autoLabels.map(replaceAutoLabelByLabelValue).join(' ')
+}
+
 const getIssueLabels: Function = (body: string, labels: string[]): string[] => {
   let selectedLabels: string[] = []
   let hasLabels: Function = compareLabels(labels)
   const ignoreComments = getIgnoreComments()
+
+  const parsedBody = parseAutoLabel(body)
+
   if (ignoreComments) {
-    const noCommentaryBody = body.replace(/\<!--(.|\n)*?-->/g, '')
+    const noCommentaryBody = parsedBody.replace(/\<!--(.|\n)*?-->/g, '')
     hasLabels(noCommentaryBody).map(elem => {
       selectedLabels.push(elem)
     })
   } else {
-    hasLabels(body).map(elem => {
+    hasLabels(parsedBody).map(elem => {
       selectedLabels.push(elem)
     })
   }
