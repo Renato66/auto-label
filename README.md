@@ -72,6 +72,19 @@ and update the issue.yml repo-token with:
 If you prefer to leave as default (true) You can provide a list of labels in a [template](https://help.github.com/en/github/building-a-strong-community/configuring-issue-templates-for-your-repository#configuring-the-template-chooser) for the author to choose wich labels are avaliable to pick
 But if you prefer to set it as false, the author can set the labels inside a comment so it doesn't appear on issue body
 
+### Scoped blocks
+
+You can set a custom part of your issue/pr to be labeled using this structure:
+
+```
+Some text that could have a label that wouldn't be set
+<!-- AUTO-LABEL:START -->
+Another text that could have a label and will be set as a label
+<!-- AUTO-LABEL:END -->
+```
+
+thanks to [@dielduarte](https://github.com/dielduarte) and [@PauloGoncalvesBH](https://github.com/PauloGoncalvesBH)
+
 ### Labels Synonyms
 
 Sometimes labels can be set uppon other texts, as an example, if you have a label like `C: VCombobox` it would be hard to match the label in a normal issue, but you can provide a JSON to set it synonyms:
