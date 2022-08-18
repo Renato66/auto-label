@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/actions/container-toolkit-template#readme",
   "dependencies": {
-    "@actions/core": "^1.2.6",
+    "@actions/core": "^1.9.1",
     "@actions/github": "^2.1.1",
     "@actions/http-client": "^1.0.11",
     "path": "^0.12.7"
