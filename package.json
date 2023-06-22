@@ -1,6 +1,6 @@
 {
   "name": "auto-label",
-  "version": "2.1.2",
+  "version": "2.3.0",
   "description": "issue creator can check their own labels",
   "main": "lib/main.js",
   "scripts": {

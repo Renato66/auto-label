@@ -5,7 +5,7 @@ const {getRepoLabels, addLabels} = require('./github')
 
 export async function run() {
   try {
-    console.log('*** running renato66/auto-label version 2.1.2 ***')
+    console.log('*** running renato66/auto-label version 2.3.0 ***')
     const token = core.getInput('repo-token', {required: true})
     const client = new github.GitHub(token)
     const issue = github.context.payload.issue
