@@ -5,12 +5,17 @@ const {getRepoLabels, addLabels} = require('./github')
 
 export async function run() {
   try {
-    console.log('*** running renato66/auto-label version 2.3.0 ***')
+    console.log('*** running renato66/auto-label version 2.3.1 ***')
     const token = core.getInput('repo-token', {required: true})
     const client = new github.GitHub(token)
     const issue = github.context.payload.issue
     if (issue === undefined) {
-      throw new Error('Issue undefined')
+      console.log('Issue undefined')
+      return
+    }
+    if (issue.body === undefined) {
+      console.log('Issue body undefined')
+      return
     }
     console.log('Getting repository labels...')
     const repoLabels: string = await getRepoLabels(client)
