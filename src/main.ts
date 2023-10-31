@@ -13,7 +13,7 @@ export async function run() {
       console.log('Issue undefined')
       return
     }
-    if (issue.body === undefined) {
+    if (!issue.body) {
       console.log('Issue body undefined')
       return
     }
