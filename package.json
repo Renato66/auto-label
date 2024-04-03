@@ -1,51 +1,16 @@
 {
   "name": "auto-label",
-  "version": "2.3.0",
-  "description": "issue creator can check their own labels",
-  "main": "lib/main.js",
-  "scripts": {
-    "build": "tsc",
-    "format": "prettier --write **/*.ts",
-    "test": "jest",
-    "coverage": "jest --collect-coverage"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/actions/container-toolkit-template.git"
-  },
-  "keywords": [
-    "actions",
-    "container",
-    "toolkit",
-    "setup"
-  ],
-  "author": "GitHub",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/actions/container-toolkit-template/issues"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
-  },
-  "homepage": "https://github.com/actions/container-toolkit-template#readme",
-  "dependencies": {
-    "@actions/core": "^1.2.6",
-    "@actions/github": "^2.1.1",
-    "@actions/http-client": "^1.0.11",
-    "path": "^0.12.7"
-  },
+  "version": "3.0.0",
+  "module": "src/index.ts",
+  "type": "module",
   "devDependencies": {
-    "@types/jest": "^26.0.14",
-    "@types/node": "^12.0.4",
-    "husky": "^4.2.3",
-    "jest": "^24.8.0",
-    "jest-circus": "^24.7.1",
-    "nock": "^11.7.1",
-    "prettier": "2.0.2",
-    "pretty-quick": "^2.0.1",
-    "ts-jest": "^24.0.2",
-    "typescript": "^3.5.1"
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@actions/core": "1.10.1",
+    "@actions/github": "6.0.0"
   }
 }
