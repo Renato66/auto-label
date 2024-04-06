@@ -1,4 +1,4 @@
-name: Unit test
+name: Checks
 
 on:
   pull_request:
@@ -17,4 +17,5 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-bun-${{ github.ref }}
       - run: bun install
+      - run: bun tslint
       - run: bun test

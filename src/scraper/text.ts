@@ -1,10 +1,10 @@
 import * as core from '@actions/core'
 
-const escapeRegExp: Function = (string: String): String => {
+const escapeRegExp = (string: String): String => {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') // $& means the whole matched string
 }
 
-const compareLabels = (labels: string[]): (line: string) => string[] => {
+const compareLabels = (labels: string[]): ((line: string) => string[]) => {
   const labelsSynonyms = getLabelsSynonyms()
   const hasSynonyms = Object.keys(labelsSynonyms).length !== 0
   if (hasSynonyms) {
