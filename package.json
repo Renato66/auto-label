@@ -3,9 +3,15 @@
   "version": "3.0.0",
   "module": "src/index.ts",
   "type": "module",
+  "scripts": {
+    "test": "bun test",
+    "coverage": "bun test --coverage",
+    "tslint": "bun run node_modules/typescript/lib/tsc.js --noEmit"
+  },
   "devDependencies": {
     "@types/bun": "latest",
-    "nock": "^13.5.4"
+    "nock": "^13.5.4",
+    "typescript": "^5.4.4"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
