@@ -6,14 +6,14 @@
 
 ![image](https://user-images.githubusercontent.com/9284273/79672530-57c1db80-81a9-11ea-900c-3b4f73984e0a.png)
 
-The Auto label action will check for every new issue and automatically adds a label based on the body of the issue. This means that finding specifc issues will be much more easy.
+The Auto label action will check for every new issue and automatically adds a label based on the body of the issue. This means that finding specific issues will be much easier.
 
 > [!WARNING]  
 > The main branch is being refactored, use the stable one at [master](https://github.com/Renato66/auto-label/tree/master) subscribe to [v3](https://github.com/Renato66/auto-label/issues/75) to get the latest version when it's released
 
 ## Creating
 
-Check out the app to make yml file
+Check out the app to make a YAML file
 [https://renato66.github.io/auto-label/](https://renato66.github.io/auto-label/)
 
 or
@@ -42,7 +42,7 @@ jobs:
 
 | Name               | Description                         | Required | Default |          Examples          |
 | ------------------ | ----------------------------------- | -------- | ------- | :------------------------: |
-| repo-token         | Github token for the repository     | true     | -       |     [...](#repo-token)     |
+| repo-token         | GitHub token for the repository     | true     | -       |     [...](#repo-token)     |
 | ignore-comments    | Ignore labels inside issue comments | false    | true    |  [...](#ignore-comments)   |
 | labels-synonyms    | Text synonyms for labels            | false    | -       |  [...](#labels-synonyms)   |
 | labels-not-allowed | Labels to ignore                    | false    | -       | [...](#labels-not-allowed) |
@@ -50,13 +50,13 @@ jobs:
 
 ### Repo Token
 
-Repo token is provided automaticly by github just need to add
+Repo token is provided automatically by GitHub; just need to add
 
 ```
 repo-token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-#### Change bot apperance
+#### Change bot appearance
 
 If you want to change who added the labels, you can provide a user token
 
@@ -72,7 +72,7 @@ and update the issue.yml repo-token with:
 
 ### Ignore Comments
 
-If you prefer to leave as default (true) You can provide a list of labels in a [template](https://help.github.com/en/github/building-a-strong-community/configuring-issue-templates-for-your-repository#configuring-the-template-chooser) for the author to choose wich labels are avaliable to pick
+If you prefer to leave as default (true) You can provide a list of labels in a [template](https://help.github.com/en/github/building-a-strong-community/configuring-issue-templates-for-your-repository#configuring-the-template-chooser) for the author to choose which labels are available to pick
 But if you prefer to set it as false, the author can set the labels inside a comment so it doesn't appear on issue body
 
 ### Scoped blocks
@@ -90,7 +90,7 @@ thanks to [@dielduarte](https://github.com/dielduarte) and [@PauloGoncalvesBH](h
 
 ### Labels Synonyms
 
-Sometimes labels can be set uppon other texts, as an example, if you have a label like `C: VCombobox` it would be hard to match the label in a normal issue, but you can provide a JSON to set it synonyms:
+Sometimes labels can be set upon other texts, as an example, if you have a label like `C: VCombobox` it would be hard to match the label in a normal issue, but you can provide a JSON to set it synonyms:
 
 ```
 labels-synonyms: '{"C: VCombobox":["combobox","v-combobox","combo box"]}'
@@ -106,7 +106,7 @@ labels-not-allowed: '["needs priority","testing","won't fix"]'
 
 ### Default Labels
 
-Labels that will always be set when a issue is created/updated such as `triage`, they can be set in an Array form:
+Labels that will always be set when an issue is created/updated such as `triage`, they can be set in an Array form:
 
 ```
 default-labels: '["triage"]'
