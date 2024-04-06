@@ -13,8 +13,7 @@ The Auto label action will check for every new issue and automatically adds a la
 
 ## Creating
 
-Check out the app to make a YAML file
-[https://renato66.github.io/auto-label/](https://renato66.github.io/auto-label/)
+Check out the app to make a YAML file [here](https://renato66.github.io/auto-label/).
 
 or
 
