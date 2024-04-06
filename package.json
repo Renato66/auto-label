@@ -4,7 +4,8 @@
   "module": "src/index.ts",
   "type": "module",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "nock": "^13.5.4"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
