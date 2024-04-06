@@ -27,7 +27,7 @@ const addLabels: Function = async (
   issueNumber: number,
   labels: string[]
 ) => {
-  await client.issues.addLabels({
+  await client.rest.issues.addLabels({
     owner: github.context.repo.owner,
     repo: github.context.repo.repo,
     issue_number: issueNumber,
