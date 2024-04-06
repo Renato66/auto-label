@@ -11,7 +11,7 @@ jobs:
     
     steps:
     
-      - uses: Renato66/auto-label@master
+      - uses: Renato66/auto-label@main
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           labels-synonyms: '{"bug":["error","need fix","not working"],"enhancement":["upgrade"],"question":["help","how can i"]}'
