@@ -5,7 +5,9 @@ import { run } from './runner';
 
 // Mock core functions
 mock.module('@actions/core', () => ({
-  getInput: jest.fn(() => 'mocked-token'),
+  getInput: jest.fn((input) => {
+    return input ==='repo-token' ? 'mockedToken' : undefined
+  }),
   info: jest.fn(),
   startGroup: jest.fn(),
   endGroup: jest.fn(),
@@ -29,9 +31,6 @@ const addLabelsSpy = jest.fn()
 mock.module('./service/github', () => ({
   getRepoLabels: jest.fn(() => []),
   addLabels: addLabelsSpy,
-}));
-mock.module('./domain/labelsNotAllowed', () => ({
-  removeLabelsNotAllowed: jest.fn((labels: string[]) => labels),
 }));
 mock.module('./scraper/text', () => ({
   getIssueLabels: jest.fn(() => []),
