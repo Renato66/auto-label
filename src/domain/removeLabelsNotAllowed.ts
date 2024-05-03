@@ -6,13 +6,11 @@ export const removeLabelsNotAllowed = (
     return labels
   }
   const labelsLC = labels.map(elem => elem.toLocaleLowerCase())
-  const labelsNotAllowedLC = labelsNotAllowed.map(elem =>
+  const labelsNotAllowedLC = new Set(labelsNotAllowed.map(elem =>
     elem.toLocaleLowerCase()
-  )
+  ))
   return labels.filter(
     (_, index) =>
-      !labelsNotAllowedLC.find(
-        labelNotAllowed => labelNotAllowed === labelsLC[index]
-      )
+      !labelsNotAllowedLC.has(labelsLC[index])
   )
 }
