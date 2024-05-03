@@ -18,4 +18,5 @@ jobs:
             ${{ runner.os }}-bun-${{ github.ref }}
       - run: bun install
       - run: bun tslint
+      - run: bun lint
       - run: bun test
