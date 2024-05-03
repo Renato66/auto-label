@@ -10,7 +10,8 @@ const getObjectInput = <T>(field: string, fallback: T): T => {
   }
 }
 const getBooleanInput = (field: string, fallback: boolean): boolean => {
-  if([undefined, ''].includes(core.getInput(field, { trimWhitespace: true }))) return fallback
+  if ([undefined, ''].includes(core.getInput(field, { trimWhitespace: true })))
+    return fallback
   return core.getBooleanInput(field)
 }
 

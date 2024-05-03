@@ -13,15 +13,11 @@ export async function run() {
     core.info(`*** running renato66/auto-label version ${version} ***`)
 
     core.startGroup('Getting repository configuration')
-    const token = core.getInput('repo-token', {required: true})
+    const token = core.getInput('repo-token', { required: true })
     const octokit = github.getOctokit(token)
     const issue = github.context.payload.issue!
-    const {
-      labelsNotAllowed,
-      defaultLabels,
-      labelsSynonyms,
-      ignoreComments
-    } = getConfigFile()
+    const { labelsNotAllowed, defaultLabels, labelsSynonyms, ignoreComments } =
+      getConfigFile()
     core.endGroup()
 
     core.startGroup('Getting repository labels')
@@ -33,7 +29,13 @@ export async function run() {
     core.endGroup()
 
     core.startGroup('Getting repository labels')
-    const issueLabels: string[] = getIssueLabels(issue.body!, repoLabels, ignoreComments, defaultLabels, labelsSynonyms)
+    const issueLabels: string[] = getIssueLabels(
+      issue.body!,
+      repoLabels,
+      ignoreComments,
+      defaultLabels,
+      labelsSynonyms
+    )
     core.info(`Labels found: ${issueLabels.length}`)
     core.endGroup()
 

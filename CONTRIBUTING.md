@@ -22,9 +22,8 @@ This project was created using `bun init` in bun v1.1.0. [Bun](https://bun.sh) i
 > [!NOTE]  
 > You will need to have [docker](https://www.docker.com/products/docker-desktop/) installed
 
-
 To create a docker image:
 
 ```
-docker build --pull -t auto-label .  
+docker build --pull -t auto-label .
 ```

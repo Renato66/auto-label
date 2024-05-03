@@ -8,12 +8,12 @@ const compareLabels = (
 ): ((line: string) => string[]) => {
   const labelsRegex = new RegExp(
     labels
-      .map(elem => {
+      .map((elem) => {
         if (labelsSynonyms[elem] === undefined) {
           return `\\b${escapeRegExp(elem)}\\b`
         } else {
           return [elem, ...labelsSynonyms[elem]]
-            .map(synonym => `\\b${escapeRegExp(synonym)}\\b`)
+            .map((synonym) => `\\b${escapeRegExp(synonym)}\\b`)
             .join('|')
         }
       })
@@ -22,16 +22,16 @@ const compareLabels = (
   )
   let synonymsObject: Record<string, string> = {}
   for (let label in labelsSynonyms) {
-    labelsSynonyms[label].forEach(synonym => {
+    labelsSynonyms[label].forEach((synonym) => {
       synonymsObject[synonym.toLowerCase()] = label
     })
   }
   const hasLabels = (line: string): string[] => {
     const selectedLabels = line.match(labelsRegex) || []
-    return selectedLabels.map(elem => {
+    return selectedLabels.map((elem) => {
       return (
         synonymsObject[elem.toLowerCase()] ||
-        labels.find(label => label.toLowerCase() === elem.toLowerCase()) ||
+        labels.find((label) => label.toLowerCase() === elem.toLowerCase()) ||
         elem
       )
     })
@@ -68,11 +68,11 @@ export const getIssueLabels = (
 
   if (ignoreComments) {
     const noCommentaryBody = parsedBody.replace(/\<!--(.|\n)*?-->/g, '')
-    hasLabels(noCommentaryBody).map(elem => {
+    hasLabels(noCommentaryBody).map((elem) => {
       selectedLabels.push(elem)
     })
   } else {
-    hasLabels(parsedBody).map(elem => {
+    hasLabels(parsedBody).map((elem) => {
       selectedLabels.push(elem)
     })
   }

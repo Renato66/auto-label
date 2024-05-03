@@ -1,52 +1,52 @@
-import { expect, describe, test, mock, jest } from 'bun:test';
-import * as core from '@actions/core';
-import '@actions/github';
-import { run } from './runner';
+import { expect, describe, test, mock, jest } from 'bun:test'
+import * as core from '@actions/core'
+import '@actions/github'
+import { run } from './runner'
 
 // // Mock core functions
 mock.module('@actions/core', () => ({
   getInput: jest.fn((input) => {
-    return input ==='repo-token' ? 'mockedToken' : undefined
+    return input === 'repo-token' ? 'mockedToken' : undefined
   }),
   info: jest.fn(),
   startGroup: jest.fn(),
   endGroup: jest.fn(),
-  setFailed: jest.fn(),
-}));
+  setFailed: jest.fn()
+}))
 
 // Mock github context
-const mockIssue = { number: 123, body: 'Mocked issue body label1' };
+const mockIssue = { number: 123, body: 'Mocked issue body label1' }
 const mockContext = {
   payload: {
-    issue: mockIssue,
-  },
-};
+    issue: mockIssue
+  }
+}
 mock.module('@actions/github', () => ({
   getOctokit: jest.fn(),
-  context: mockContext,
-}));
+  context: mockContext
+}))
 
 // // Mock service functions
 const addLabelsSpy = jest.fn()
 mock.module('./service/github', () => ({
   getRepoLabels: jest.fn(() => ['label1']),
   addLabels: addLabelsSpy
-}));
+}))
 
 describe('run function', () => {
   test('should add if any found label', async () => {
-    await run();
-    expect(core.setFailed).not.toHaveBeenCalled();
-    expect(addLabelsSpy).toHaveBeenCalled();
-  });
+    await run()
+    expect(core.setFailed).not.toHaveBeenCalled()
+    expect(addLabelsSpy).toHaveBeenCalled()
+  })
   test('should add if any found label', async () => {
     mock.module('@actions/core', () => ({
       getInput: jest.fn(() => undefined),
       info: jest.fn(),
       startGroup: jest.fn(),
       endGroup: jest.fn(),
-      setFailed: jest.fn(),
-    }));
-    expect(async () => await run()).toThrowError();
-  });
-});
+      setFailed: jest.fn()
+    }))
+    expect(async () => await run()).toThrowError()
+  })
+})

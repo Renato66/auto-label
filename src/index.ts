@@ -1,2 +1,2 @@
-import { run } from './runner';
+import { run } from './runner'
 run()

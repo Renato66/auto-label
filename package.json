@@ -6,11 +6,14 @@
   "scripts": {
     "test": "bun test",
     "coverage": "bun test --coverage",
-    "tslint": "bun run node_modules/typescript/lib/tsc.js --noEmit"
+    "tslint": "bun run node_modules/typescript/lib/tsc.js --noEmit",
+    "lint": "bun prettier . --check",
+    "lint:fix": "bun prettier . --write"
   },
   "devDependencies": {
     "@types/bun": "latest",
     "nock": "^13.5.4",
+    "prettier": "3.2.5",
     "typescript": "^5.4.4"
   },
   "peerDependencies": {

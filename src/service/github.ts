@@ -1,18 +1,20 @@
 import * as github from '@actions/github'
 import type { GitHub } from '@actions/github/lib/utils'
 
-const getRepoLabels = async (client: InstanceType<typeof GitHub>): Promise<string[]> => {
+const getRepoLabels = async (
+  client: InstanceType<typeof GitHub>
+): Promise<string[]> => {
   let list: string[] = []
   let page = 1
   let hasMorePages = false
   do {
-    const {data: labelList} = await client.rest.issues.listLabelsForRepo({
+    const { data: labelList } = await client.rest.issues.listLabelsForRepo({
       owner: github.context.repo.owner,
       repo: github.context.repo.repo,
       per_page: 100,
       page
     })
-    list = [...list, ...labelList.map((elem) =>  elem.name)]
+    list = [...list, ...labelList.map((elem) => elem.name)]
     hasMorePages = labelList.length === 100
     page++
   } while (hasMorePages)
@@ -32,4 +34,4 @@ const addLabels = async (
     labels
   })
 }
-export {getRepoLabels, addLabels}
+export { getRepoLabels, addLabels }
