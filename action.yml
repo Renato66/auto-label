@@ -4,7 +4,7 @@ author: 'Renato66'
 branding:
   icon: 'check-square'
   color: 'blue'
-inputs: 
+inputs:
   repo-token:
     description: 'github token for the repository'
     required: true
