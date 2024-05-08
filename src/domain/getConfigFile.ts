@@ -10,7 +10,7 @@ export type Config = {
 
 export const getConfigFile = (): Config => {
 
-  const configPath = getInput<string>('configuration-file', '.github/workflows/auto-label.json')
+  const configPath = getInput<string>('configuration-file', '.github/workflows/auto-label.json5')
   const labelsNotAllowed = getInput<string[]>('labels-not-allowed', [])
   const defaultLabels = getInput<string[]>('default-labels', [])
   const labelsSynonyms = getInput<Record<string, string[]>>(

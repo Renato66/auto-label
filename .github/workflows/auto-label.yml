@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           sparse-checkout: |
-            .github/workflows/auto-label.json
+            .github/workflows/auto-label.json5
           sparse-checkout-cone-mode: false
       - uses: Renato66/auto-label@main
         with:
