@@ -10,13 +10,23 @@ export const getLabelConfigs = (configurationPath: string): Config | {} => {
   })
 
   try {
-    const config =
-      JSON5.parse(fileContent)
+    const config = JSON5.parse(fileContent)
     return {
-      defaultLabels: Array.isArray(config.defaultLabels) ? config.defaultLabels : undefined,
-      labelsNotAllowed: Array.isArray(config.labelsNotAllowed) ? config.labelsNotAllowed : undefined,
-      ignoreComments: typeof config.ignoreComments === 'boolean' ? config.ignoreComments : undefined,
-      labelsSynonyms: typeof config.labelsSynonyms === 'object' && !Array.isArray(config.labelsSynonyms) ? config.labelsSynonyms : undefined
+      defaultLabels: Array.isArray(config.defaultLabels)
+        ? config.defaultLabels
+        : undefined,
+      labelsNotAllowed: Array.isArray(config.labelsNotAllowed)
+        ? config.labelsNotAllowed
+        : undefined,
+      ignoreComments:
+        typeof config.ignoreComments === 'boolean'
+          ? config.ignoreComments
+          : undefined,
+      labelsSynonyms:
+        typeof config.labelsSynonyms === 'object' &&
+        !Array.isArray(config.labelsSynonyms)
+          ? config.labelsSynonyms
+          : undefined
     }
   } catch {
     core.warning('Could not parse configuration file. skipping')
