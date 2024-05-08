@@ -1,6 +1,7 @@
 import fs from 'fs'
 import type { Config } from './getConfigFile'
 import * as core from '@actions/core'
+import JSON5 from 'json5'
 
 export const getLabelConfigs = (configurationPath: string): Config | {} => {
   if (fs.existsSync(configurationPath)) return {}
@@ -10,7 +11,7 @@ export const getLabelConfigs = (configurationPath: string): Config | {} => {
 
   try {
     const config =
-      JSON.parse(fileContent)
+      JSON5.parse(fileContent)
     return {
       defaultLabels: Array.isArray(config.defaultLabels) ? config.defaultLabels : undefined,
       labelsNotAllowed: Array.isArray(config.labelsNotAllowed) ? config.labelsNotAllowed : undefined,
