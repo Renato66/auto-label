@@ -11,8 +11,8 @@ const getFilePath = (configurationPath: string): string | undefined => {
   if (configurationPath.includes('.json') && fs.existsSync(repoPath))
     return repoPath
   if (!configurationPath.includes('.json')) {
-    const files = fs.readdirSync(repoPath)
-    files.filter((elem) => jsonTypes.includes(elem))
+    const allFiles = fs.readdirSync(repoPath)
+    const files = allFiles.filter((elem) => jsonTypes.includes(elem))
     if (!files.length) return
     return `${repoPath}/${files[0]}`.replace('//', '/')
   }
