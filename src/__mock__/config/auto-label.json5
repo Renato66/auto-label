@@ -1,0 +1,13 @@
+{
+  // comment test
+  labelsSynonyms: {
+    bug: [
+      'error'
+      // trailing comma
+    ]
+  },
+  // single quote
+  labelsNotAllowed: ['documentation'],
+  defaultLabels: ['triage'],
+  ignoreComments: true
+}

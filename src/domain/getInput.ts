@@ -22,6 +22,6 @@ export const getInput = <T>(field: string, fallback: T): T => {
     case 'boolean':
       return getBooleanInput(field, fallback) as T
     default:
-      return core.getInput(field) as T
+      return (core.getInput(field) as T) || fallback
   }
 }

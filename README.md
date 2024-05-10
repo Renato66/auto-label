@@ -2,22 +2,14 @@
 
 ![Unit test](https://github.com/Renato66/auto-label/workflows/Unit%20test/badge.svg)
 [![Auto Label](https://github.com/Renato66/auto-label/workflows/Labeling%20new%20issue/badge.svg)](https://github.com/Renato66/auto-label)
-[![codecov](https://codecov.io/gh/Renato66/auto-label/branch/master/graph/badge.svg)](https://codecov.io/gh/Renato66/auto-label)
 
 ![image](https://user-images.githubusercontent.com/9284273/79672530-57c1db80-81a9-11ea-900c-3b4f73984e0a.png)
 
 The Auto label action will check for every new issue and automatically adds a label based on the body of the issue. This means that finding specific issues will be much easier.
 
-> [!WARNING]  
-> The main branch is being refactored, use the stable one at [master](https://github.com/Renato66/auto-label/tree/master) subscribe to [v3](https://github.com/Renato66/auto-label/issues/75) to get the latest version when it's released
-
 ## Creating
 
-Check out the app to make a YAML file [here](https://renato66.github.io/auto-label/).
-
-or
-
-add a file to `.github/workflows/issue.yml`
+Add a file to `.github/workflows/auto-label.yml`
 
 ```yml
 name: Labeling new issue
@@ -28,24 +20,48 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: Renato66/auto-label@v2
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github/workflows
+          sparse-checkout-cone-mode: false
+      - uses: Renato66/auto-label@v3
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          ignore-comments: true
-          labels-synonyms: '{"bug":["error","need fix","not working"],"enhancement":["upgrade"],"question":["help"]}'
-          labels-not-allowed: '["good first issue"]'
-          default-labels: '["help wanted"]'
+```
+
+Add a config file to `.github/workflows/auto-label.json5`
+
+```json5
+// see inputs for more examples
+{
+  labelsSynonyms: {
+    bug: ['error', 'need fix', 'not working'],
+    enhancement: ['upgrade'],
+    question: ['help', 'how can i']
+  },
+  labelsNotAllowed: [
+    'documentation',
+    'duplicate',
+    'good first issue',
+    'help wanted',
+    'invalid'
+  ],
+  defaultLabels: ['triage'],
+  ignoreComments: true
+}
 ```
 
 ## Inputs
 
-| Name               | Description                         | Required | Default |          Examples          |
-| ------------------ | ----------------------------------- | -------- | ------- | :------------------------: |
-| repo-token         | GitHub token for the repository     | true     | -       |     [...](#repo-token)     |
-| ignore-comments    | Ignore labels inside issue comments | false    | true    |  [...](#ignore-comments)   |
-| labels-synonyms    | Text synonyms for labels            | false    | -       |  [...](#labels-synonyms)   |
-| labels-not-allowed | Labels to ignore                    | false    | -       | [...](#labels-not-allowed) |
-| default-labels     | Labels that will always be set      | false    | -       |   [...](#default-labels)   |
+| Name               | Description                         | Required | Default                            |          Examples          |
+| ------------------ | ----------------------------------- | -------- | ---------------------------------- | :------------------------: |
+| repo-token         | GitHub token for the repository     | true     | -                                  | [...](#repo-token)         |
+| configuration-file | Configuration file path             | true     | .github/workflows/auto-label.json5 | [...](#configuration-file) |
+| ignore-comments    | Ignore labels inside issue comments | false    | true                               | [...](#ignore-comments)    |
+| labels-synonyms    | Text synonyms for labels            | false    | -                                  | [...](#labels-synonyms)    |
+| labels-not-allowed | Labels to ignore                    | false    | -                                  | [...](#labels-not-allowed) |
+| default-labels     | Labels that will always be set      | false    | -                                  | [...](#default-labels)     |
 
 ### Repo Token
 
@@ -53,6 +69,41 @@ Repo token is provided automatically by GitHub; just need to add
 
 ```
 repo-token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+### Configuration File
+
+Configuration file can be created at any place at your repository, it will need another action to get the file like:
+
+```yml
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github/workflows/
+          sparse-checkout-cone-mode: false
+```
+
+and it will look for any file named auto-label with the extension `JSON` or `JSON5` or `JSONC` but you can also define a specific extension
+
+```yml
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github/workflows/auto-label.json5
+          sparse-checkout-cone-mode: false
+```
+
+to set another place to store your configuration file, you should checkout and point with `configuration-file` input:
+
+```yml
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            src/actions/configuration.json
+          sparse-checkout-cone-mode: false
+      - uses: Renato66/auto-label@v3
+        with:
+          configuration-file: 'src/actions/configuration.json'
 ```
 
 #### Change bot appearance
