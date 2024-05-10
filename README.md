@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           sparse-checkout: |
-            .github/workflows
+            .github/workflows/auto-label.json5
           sparse-checkout-cone-mode: false
       - uses: Renato66/auto-label@v3
         with:
@@ -57,7 +57,7 @@ Add a config file to `.github/workflows/auto-label.json5`
 | Name               | Description                         | Required | Default                            |          Examples          |
 | ------------------ | ----------------------------------- | -------- | ---------------------------------- | :------------------------: |
 | repo-token         | GitHub token for the repository     | true     | -                                  | [...](#repo-token)         |
-| configuration-file | Configuration file path             | true     | .github/workflows/auto-label.json5 | [...](#configuration-file) |
+| configuration-file | Configuration file path             | false    | .github/workflows/auto-label.json5 | [...](#configuration-file) |
 | ignore-comments    | Ignore labels inside issue comments | false    | true                               | [...](#ignore-comments)    |
 | labels-synonyms    | Text synonyms for labels            | false    | -                                  | [...](#labels-synonyms)    |
 | labels-not-allowed | Labels to ignore                    | false    | -                                  | [...](#labels-not-allowed) |
@@ -73,17 +73,16 @@ repo-token: ${{ secrets.GITHUB_TOKEN }}
 
 ### Configuration File
 
-Configuration file can be created at any place at your repository, it will need another action to get the file like:
+Configuration file can be created at any place at your repository, it will need another [action](https://github.com/actions/checkout?tab=readme-ov-file#fetch-only-a-single-file) to get the file like:
 
 ```yml
       - uses: actions/checkout@v4
         with:
           sparse-checkout: |
-            .github/workflows/
-          sparse-checkout-cone-mode: false
+            .github/workflows
 ```
 
-and it will look for any file named auto-label with the extension `JSON` or `JSON5` or `JSONC` but you can also define a specific extension
+and it will look for any file named `auto-label` with the extension `JSON` or `JSON5` or `JSONC` but you can also define a specific extension
 
 ```yml
       - uses: actions/checkout@v4
@@ -125,7 +124,23 @@ and update the issue.yml repo-token with:
 If you prefer to leave as default (true) You can provide a list of labels in a [template](https://help.github.com/en/github/building-a-strong-community/configuring-issue-templates-for-your-repository#configuring-the-template-chooser) for the author to choose which labels are available to pick
 But if you prefer to set it as false, the author can set the labels inside a comment so it doesn't appear on issue body
 
-### Scoped blocks
+```json5
+// .github/workflows/auto-label.json5
+{
+  "ignoreComments": true
+}
+```
+
+<details>
+  <summary>yml (deprecating)</summary>
+
+  ```yml
+  ignore-comments: true
+  ```
+</details>
+
+
+#### Scoped blocks
 
 You can set a custom part of your issue/pr to be labeled using this structure:
 
@@ -142,25 +157,58 @@ thanks to [@dielduarte](https://github.com/dielduarte) and [@PauloGoncalvesBH](h
 
 Sometimes labels can be set upon other texts, as an example, if you have a label like `C: VCombobox` it would be hard to match the label in a normal issue, but you can provide a JSON to set it synonyms:
 
+```json5
+// .github/workflows/auto-label.json5
+{
+  "labelsSynonyms": {"C: VCombobox": ["combobox", "v-combobox", "combo box"]}
+}
 ```
-labels-synonyms: '{"C: VCombobox":["combobox","v-combobox","combo box"]}'
-```
+
+<details>
+  <summary>yml (deprecating)</summary>
+
+  ```yml
+  labels-synonyms: '{"C: VCombobox":["combobox","v-combobox","combo box"]}'
+  ```
+</details>
 
 ### Labels Not Allowed
 
 Some labels are restricted to repo owners such as `needs priority` `testing` `won't fix` they can be set in an Array form:
 
+```json5
+// .github/workflows/auto-label.json5
+{
+  "labelsNotAllowed": ["needs priority", "testing", "won't fix"]
+}
 ```
-labels-not-allowed: '["needs priority","testing","won't fix"]'
-```
+
+<details>
+  <summary>yml (deprecating)</summary>
+
+  ```yml
+  labels-not-allowed: '["needs priority","testing","won't fix"]'
+  ```
+</details>
 
 ### Default Labels
 
 Labels that will always be set when an issue is created/updated such as `triage`, they can be set in an Array form:
 
+```json5
+// .github/workflows/auto-label.json5
+{
+  "defaultLabels": ["needs priority", "testing", "won't fix"]
+}
 ```
-default-labels: '["triage"]'
-```
+
+<details>
+  <summary>yml (deprecating)</summary>
+
+  ```yml
+  default-labels: '["triage"]'
+  ```
+</details>
 
 ## Badge
 
