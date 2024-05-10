@@ -13,10 +13,7 @@ const defaultConfig = {
 }
 describe('getLabelConfigs', () => {
   test('should return label configurations from a valid JSON folder path', () => {
-    const options = [
-      `${configurationPath}/`,
-      `${configurationPath}`
-    ]
+    const options = [`${configurationPath}/`, `${configurationPath}`]
     options.forEach((elem) => {
       const result = getLabelConfigs(elem)
       expect(result).toEqual(defaultConfig)
