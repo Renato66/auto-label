@@ -52,7 +52,6 @@ Add a config file to `.github/workflows/auto-label.json5`
 }
 ```
 
-
 ## Inputs
 
 | Name               | Description                         | Required | Default                            |          Examples          |
@@ -106,8 +105,6 @@ to set another place to store your configuration file, you should checkout and p
         with:
           configuration-file: 'src/actions/configuration.json'
 ```
-
-
 
 #### Change bot appearance
 
