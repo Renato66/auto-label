@@ -5,11 +5,14 @@ import JSON5 from 'json5'
 const jsonTypes = ['json', 'jsonc', 'json5']
 
 const getFilePath = (configurationPath: string): string | undefined => {
-  const repoPath = `./${configurationPath}`.replace('//', '/').replace('././', './')
-  if (configurationPath.includes('.json') && fs.existsSync(repoPath)) return repoPath
+  const repoPath = `./${configurationPath}`
+    .replace('//', '/')
+    .replace('././', './')
+  if (configurationPath.includes('.json') && fs.existsSync(repoPath))
+    return repoPath
   if (!configurationPath.includes('.json')) {
     const files = fs.readdirSync(repoPath)
-    files.filter(elem => jsonTypes.includes(elem))
+    files.filter((elem) => jsonTypes.includes(elem))
     if (!files.length) return
     return `${repoPath}/${files[0]}`.replace('//', '/')
   }
@@ -44,7 +47,9 @@ export const getLabelConfigs = (configurationPath: string): Config | {} => {
           : undefined
     }
   } catch (error: any) {
-    core.warning(`Could not parse configuration file at ${filePath}: ${error.message}. Skipping.`)
+    core.warning(
+      `Could not parse configuration file at ${filePath}: ${error.message}. Skipping.`
+    )
     return {}
   }
 }

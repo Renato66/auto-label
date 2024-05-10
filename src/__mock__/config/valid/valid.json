@@ -1,14 +1,8 @@
 {
   "labels-synonyms": {
-    "bug": [
-      "error"
-    ]
+    "bug": ["error"]
   },
-  "labels-not-allowed": [
-    "documentation"
-  ],
-  "default-labels": [
-    "triage"
-  ],
+  "labels-not-allowed": ["documentation"],
+  "default-labels": ["triage"],
   "ignoreComments": true
 }

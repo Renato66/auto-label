@@ -1,26 +1,15 @@
 {
-  "labels-synonyms": {
-    "bug": [
-      "error",
-      "need fix",
-      "not working"
-    ],
-    "enhancement": [
-      "upgrade"
-    ],
-    "question": [
-      "help",
-      "how can i"
-    ]
+  'labels-synonyms': {
+    bug: ['error', 'need fix', 'not working'],
+    enhancement: ['upgrade'],
+    question: ['help', 'how can i']
   },
-  "labels-not-allowed": [
-    "documentation",
-    "duplicate",
-    "good first issue",
-    "help wanted",
-    "invalid"
+  'labels-not-allowed': [
+    'documentation',
+    'duplicate',
+    'good first issue',
+    'help wanted',
+    'invalid'
   ],
-  "default-labels": [
-    "triage"
-  ]
+  'default-labels': ['triage']
 }

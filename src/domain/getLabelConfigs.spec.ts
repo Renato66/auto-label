@@ -13,13 +13,15 @@ const defaultConfig = {
 }
 describe('getLabelConfigs', () => {
   test('should return label configurations from a valid JSON folder path', () => {
-    const options = [`${configurationPath}/valid/`, `${configurationPath}/valid`]
-    options.forEach(elem => {
+    const options = [
+      `${configurationPath}/valid/`,
+      `${configurationPath}/valid`
+    ]
+    options.forEach((elem) => {
       const result = getLabelConfigs(elem)
       expect(result).toEqual(defaultConfig)
     })
   })
-
 
   test('should return label configurations from a valid JSONC file path', () => {
     const result = getLabelConfigs(`${configurationPath}/config.jsonc`)
@@ -32,8 +34,11 @@ describe('getLabelConfigs', () => {
   })
 
   test('should return an empty object if the configuration file is not valid', () => {
-    const options = [`${configurationPath}/invalid/invalid1.json`, `${configurationPath}/invalid/invalid2.json`]
-    options.forEach(elem => {
+    const options = [
+      `${configurationPath}/invalid/invalid1.json`,
+      `${configurationPath}/invalid/invalid2.json`
+    ]
+    options.forEach((elem) => {
       const result = getLabelConfigs(elem)
       expect(result).toEqual({})
     })
@@ -41,7 +46,7 @@ describe('getLabelConfigs', () => {
 
   test('should send an warning if file is not readable', () => {
     mock.module('@actions/core', () => ({
-      warning: jest.fn(),
+      warning: jest.fn()
     }))
     const result = getLabelConfigs(`${configurationPath}/invalid/invalid3.json`)
     expect(result).toEqual({})
