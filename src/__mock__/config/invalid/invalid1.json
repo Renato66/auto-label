@@ -1,0 +1,6 @@
+{
+  "labels-synonyms": "expected: Record<string, string[]>",
+  "labels-not-allowed": "expected: string[]",
+  "default-labels": "expected: string[]",
+  "ignoreComments": "expected: boolean"
+}

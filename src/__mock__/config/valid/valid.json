@@ -1,0 +1,14 @@
+{
+  "labels-synonyms": {
+    "bug": [
+      "error"
+    ]
+  },
+  "labels-not-allowed": [
+    "documentation"
+  ],
+  "default-labels": [
+    "triage"
+  ],
+  "ignoreComments": true
+}
