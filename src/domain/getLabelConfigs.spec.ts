@@ -14,8 +14,8 @@ const defaultConfig = {
 describe('getLabelConfigs', () => {
   test('should return label configurations from a valid JSON folder path', () => {
     const options = [
-      `${configurationPath}/valid/`,
-      `${configurationPath}/valid`
+      `${configurationPath}/`,
+      `${configurationPath}`
     ]
     options.forEach((elem) => {
       const result = getLabelConfigs(elem)
@@ -24,12 +24,12 @@ describe('getLabelConfigs', () => {
   })
 
   test('should return label configurations from a valid JSONC file path', () => {
-    const result = getLabelConfigs(`${configurationPath}/config.jsonc`)
+    const result = getLabelConfigs(`${configurationPath}/auto-label.jsonc`)
     expect(result).toEqual(defaultConfig)
   })
 
   test('should return label configurations from a valid JSON5 file path', () => {
-    const result = getLabelConfigs(`${configurationPath}/config.json5`)
+    const result = getLabelConfigs(`${configurationPath}/auto-label.json5`)
     expect(result).toEqual(defaultConfig)
   })
 
