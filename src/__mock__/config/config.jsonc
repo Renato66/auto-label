@@ -1,9 +1,9 @@
 {
   // comment test
-  "labels-synonyms": {
+  "labelsSynonyms": {
     "bug": ["error"]
   },
-  "labels-not-allowed": ["documentation"],
-  "default-labels": ["triage"],
+  "labelsNotAllowed": ["documentation"],
+  "defaultLabels": ["triage"],
   "ignoreComments": true
 }

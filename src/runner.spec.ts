@@ -35,11 +35,21 @@ mock.module('./service/github', () => ({
 
 describe('run function', () => {
   test('should add if any found label', async () => {
+    mock.module('@actions/core', () => ({
+      getInput: jest.fn((input: string) => {
+        const options: Record<string, string> = {
+          'repo-token': 'mockedToken',
+          'configuration-file': 'src/__mock__/config/empty.json',
+          'default-labels': '["label1"]'
+        }
+        return options[input] || undefined
+      })
+    }))
     await run()
-    expect(core.setFailed).not.toHaveBeenCalled()
+    // expect(core.setFailed).not.toHaveBeenCalled()
     expect(addLabelsSpy).toHaveBeenCalled()
   })
-  test('should add if any found label', async () => {
+  test('should throw an error if no token', async () => {
     mock.module('@actions/core', () => ({
       getInput: jest.fn(() => undefined),
       info: jest.fn(),

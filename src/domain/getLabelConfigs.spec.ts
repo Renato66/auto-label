@@ -4,11 +4,11 @@ import * as core from '@actions/core'
 
 const configurationPath = 'src/__mock__/config'
 const defaultConfig = {
-  'labels-synonyms': {
+  labelsSynonyms: {
     bug: ['error']
   },
-  'labels-not-allowed': ['documentation'],
-  'default-labels': ['triage'],
+  labelsNotAllowed: ['documentation'],
+  defaultLabels: ['triage'],
   ignoreComments: true
 }
 describe('getLabelConfigs', () => {

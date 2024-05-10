@@ -1,15 +1,15 @@
 {
-  'labels-synonyms': {
+  labelsSynonyms: {
     bug: ['error', 'need fix', 'not working'],
     enhancement: ['upgrade'],
     question: ['help', 'how can i']
   },
-  'labels-not-allowed': [
+  labelsNotAllowed: [
     'documentation',
     'duplicate',
     'good first issue',
     'help wanted',
     'invalid'
   ],
-  'default-labels': ['triage']
+  defaultLabels: ['triage']
 }

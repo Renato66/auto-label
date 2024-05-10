@@ -27,9 +27,8 @@ export const getLabelConfigs = (configurationPath: string): Config | {} => {
   })
 
   try {
-    console.log(fileContent)
     const config = JSON5.parse(fileContent)
-    return {
+    const configObject = {
       defaultLabels: Array.isArray(config.defaultLabels)
         ? config.defaultLabels
         : undefined,
@@ -46,6 +45,11 @@ export const getLabelConfigs = (configurationPath: string): Config | {} => {
           ? config.labelsSynonyms
           : undefined
     }
+    return Object.fromEntries(
+      Object.entries(configObject).filter(
+        ([_key, value]) => value !== undefined
+      )
+    )
   } catch (error: any) {
     core.warning(
       `Could not parse configuration file at ${filePath}: ${error.message}. Skipping.`
