@@ -113,9 +113,15 @@ to set another place to store your configuration file, you should checkout and p
 
 If you want to change who added the labels, you can provide a user token
 
-![image](https://user-images.githubusercontent.com/9284273/79672221-678bf080-81a6-11ea-908e-fb875772121a.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Renato66/auto-label/assets/9284273/775b53f3-356d-4b7c-8c71-ed007beb6bf1">
+  <img alt="Example" src="https://github.com/Renato66/auto-label/assets/9284273/ab29c070-e511-4a25-ac34-784842b93d77">
+</picture>
 
-![image](https://user-images.githubusercontent.com/9284273/79672289-e123de80-81a6-11ea-9faa-237adc0873f0.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Renato66/auto-label/assets/9284273/edc852c3-4962-475b-8da7-ac61bd340a2b">
+  <img alt="Example" src="https://github.com/Renato66/auto-label/assets/9284273/aedcdd0b-c538-437f-96cc-c4331a7c328c">
+</picture>
 
 The [token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) will only need the `public_repo` scope
 
