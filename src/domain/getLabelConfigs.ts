@@ -5,27 +5,29 @@ import JSON5 from 'json5'
 const jsonTypes = ['json', 'jsonc', 'json5']
 
 const getFilePath = (configurationPath: string): string | undefined => {
-  const repoPath = `./${configurationPath}`
-    .replace('//', '/')
-    .replace('././', './')
-  if (configurationPath.includes('.json') && fs.existsSync(repoPath))
-    return repoPath
-  if (!configurationPath.includes('.json')) {
-    let allFiles
-    try {
-      allFiles = fs.readdirSync(repoPath)
-    } catch (error: any) {
-      core.warning(
-        `Could not read configuration file at ${repoPath}: ${error.message}. Skipping.`
+  try {
+    const repoPath = `./${configurationPath}`
+      .replace('//', '/')
+      .replace('././', './')
+    if (configurationPath.includes('.json') && fs.existsSync(repoPath))
+      return repoPath
+    if (!configurationPath.includes('.json')) {
+      const allFiles = fs.readdirSync(repoPath)
+
+      const expectedFilenames = jsonTypes.map((type) => `auto-label.${type}`)
+      const files = allFiles.filter((filename) =>
+        expectedFilenames.includes(filename)
       )
-      return
+      if (!files.length) {
+        throw new Error('No default files located.')
+      }
+      return `${repoPath}/${files[0]}`.replace('//', '/')
     }
-    const expectedFilenames = jsonTypes.map((type) => `auto-label.${type}`)
-    const files = allFiles.filter((filename) =>
-      expectedFilenames.includes(filename)
+  } catch (error: any) {
+    core.warning(
+      `Could not read configuration file, configurationPath: "${configurationPath}", error: "${error.message}". Skipping.`
     )
-    if (!files.length) return
-    return `${repoPath}/${files[0]}`.replace('//', '/')
+    return
   }
 }
 
