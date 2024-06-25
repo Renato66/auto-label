@@ -2,8 +2,12 @@
 
 ![Unit test](https://github.com/Renato66/auto-label/workflows/Unit%20test/badge.svg)
 [![Auto Label](https://github.com/Renato66/auto-label/workflows/Labeling%20new%20issue/badge.svg)](https://github.com/Renato66/auto-label)
+[![Codecov](https://codecov.io/gh/Renato66/auto-label/branch/main/graph/badge.svg)](https://codecov.io/gh/Renato66/auto-label)
 
-![image](https://user-images.githubusercontent.com/9284273/79672530-57c1db80-81a9-11ea-900c-3b4f73984e0a.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Renato66/auto-label/assets/9284273/2913d95b-0c38-4183-9663-fb5c659fe851">
+  <img alt="Example" src="https://github.com/Renato66/auto-label/assets/9284273/b913689a-e1dd-4d04-85be-0d542199b7db">
+</picture>
 
 The Auto label action will check for every new issue and automatically adds a label based on the body of the issue. This means that finding specific issues will be much easier.
 
