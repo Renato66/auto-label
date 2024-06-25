@@ -11,7 +11,15 @@ const getFilePath = (configurationPath: string): string | undefined => {
   if (configurationPath.includes('.json') && fs.existsSync(repoPath))
     return repoPath
   if (!configurationPath.includes('.json')) {
-    const allFiles = fs.readdirSync(repoPath)
+    let allFiles;
+    try {
+      allFiles = fs.readdirSync(repoPath)
+    } catch (error: any) {
+      core.warning(
+        `Could not read configuration file at ${repoPath}: ${error.message}. Skipping.`
+      )
+      return
+    }
     const files = allFiles.filter((elem) =>
       jsonTypes.map((elem) => `auto-label.${elem}`).includes(elem)
     )
