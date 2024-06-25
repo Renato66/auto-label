@@ -20,9 +20,8 @@ const getFilePath = (configurationPath: string): string | undefined => {
       )
       return
     }
-    const files = allFiles.filter((elem) =>
-      jsonTypes.map((elem) => `auto-label.${elem}`).includes(elem)
-    )
+    const expectedFilenames = jsonTypes.map((type) => `auto-label.${type}`);
+    const files = allFiles.filter((filename) => expectedFilenames.includes(filename));
     if (!files.length) return
     return `${repoPath}/${files[0]}`.replace('//', '/')
   }
