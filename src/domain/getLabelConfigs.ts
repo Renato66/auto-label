@@ -5,18 +5,29 @@ import JSON5 from 'json5'
 const jsonTypes = ['json', 'jsonc', 'json5']
 
 const getFilePath = (configurationPath: string): string | undefined => {
-  const repoPath = `./${configurationPath}`
-    .replace('//', '/')
-    .replace('././', './')
-  if (configurationPath.includes('.json') && fs.existsSync(repoPath))
-    return repoPath
-  if (!configurationPath.includes('.json')) {
-    const allFiles = fs.readdirSync(repoPath)
-    const files = allFiles.filter((elem) =>
-      jsonTypes.map((elem) => `auto-label.${elem}`).includes(elem)
+  try {
+    const repoPath = `./${configurationPath}`
+      .replace('//', '/')
+      .replace('././', './')
+    if (configurationPath.includes('.json') && fs.existsSync(repoPath))
+      return repoPath
+    if (!configurationPath.includes('.json')) {
+      const allFiles = fs.readdirSync(repoPath)
+
+      const expectedFilenames = jsonTypes.map((type) => `auto-label.${type}`)
+      const files = allFiles.filter((filename) =>
+        expectedFilenames.includes(filename)
+      )
+      if (!files.length) {
+        throw new Error('No default files located.')
+      }
+      return `${repoPath}/${files[0]}`.replace('//', '/')
+    }
+  } catch (error: any) {
+    core.warning(
+      `Could not read configuration file, configurationPath: "${configurationPath}", error: "${error.message}". Skipping.`
     )
-    if (!files.length) return
-    return `${repoPath}/${files[0]}`.replace('//', '/')
+    return
   }
 }
 
