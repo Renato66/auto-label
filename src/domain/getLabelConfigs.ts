@@ -11,7 +11,7 @@ const getFilePath = (configurationPath: string): string | undefined => {
   if (configurationPath.includes('.json') && fs.existsSync(repoPath))
     return repoPath
   if (!configurationPath.includes('.json')) {
-    let allFiles;
+    let allFiles
     try {
       allFiles = fs.readdirSync(repoPath)
     } catch (error: any) {
@@ -20,8 +20,10 @@ const getFilePath = (configurationPath: string): string | undefined => {
       )
       return
     }
-    const expectedFilenames = jsonTypes.map((type) => `auto-label.${type}`);
-    const files = allFiles.filter((filename) => expectedFilenames.includes(filename));
+    const expectedFilenames = jsonTypes.map((type) => `auto-label.${type}`)
+    const files = allFiles.filter((filename) =>
+      expectedFilenames.includes(filename)
+    )
     if (!files.length) return
     return `${repoPath}/${files[0]}`.replace('//', '/')
   }
