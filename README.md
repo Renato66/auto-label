@@ -223,9 +223,8 @@ Labels that will always be set when an issue is created/updated such as `triage`
 
 ## Badge
 
-To add a badge simple replace owner and repository
+To add a badge simple replace <OWNER>, <REPOSITORY> and <FILE-NAME> name:
 
 ```markdown
-<!-- Replace <OWNER>, <REPOSITORY> and <FILE-NAME> with the name of the file in .github/workflows -->
 [![Auto Label](https://img.shields.io/github/actions/workflow/status/<OWNER>/<REPOSITORY>/<FILE-NAME>.yml?logo=github&label=Auto%20Label)](https://github.com/Renato66/auto-label)
 ```
