@@ -1,8 +1,9 @@
 # Auto-label
 
-![Unit test](https://github.com/Renato66/auto-label/workflows/Unit%20test/badge.svg)
-[![Auto Label](https://github.com/Renato66/auto-label/workflows/Labeling%20new%20issue/badge.svg)](https://github.com/Renato66/auto-label)
-[![Codecov](https://codecov.io/gh/Renato66/auto-label/branch/main/graph/badge.svg)](https://codecov.io/gh/Renato66/auto-label)
+[![GitHub Checks Workflow Status](https://img.shields.io/github/actions/workflow/status/Renato66/auto-label/checks.yml?logo=github&label=Build)](https://github.com/Renato66/auto-label/actions/workflows/checks.yml)
+[![Auto Label](https://img.shields.io/github/actions/workflow/status/Renato66/auto-label/auto-label.yml?logo=github&label=Auto%20Label)](https://github.com/Renato66/auto-label/actions/workflows/auto-label.yml)
+[![Codecov](https://img.shields.io/codecov/c/github/renato66/auto-label?logo=codecov)](https://codecov.io/gh/Renato66/auto-label)
+[![Usage](https://img.shields.io/badge/used_by-125-blue?logo=githubactions&logoColor=FFF&logoSize=small)](https://github.com/search?q=%22uses%3A+renato66%2Fauto-label%22+path%3A.github%2Fworkflows&type=code)
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Renato66/auto-label/assets/9284273/2913d95b-0c38-4183-9663-fb5c659fe851">
@@ -222,13 +223,8 @@ Labels that will always be set when an issue is created/updated such as `triage`
 
 ## Badge
 
-To add a badge simple replace owner and repository
+To add a badge simple replace <OWNER>, <REPOSITORY> and <FILE-NAME> name:
 
-<!-- Replace <OWNER> and <REPOSITORY>. It assumes workflow name is "Labeling%20new%20issue" -->
-
-[![Auto Label](https://github.com/Renato66/auto-label/workflows/Labeling%20new%20issue/badge.svg)](https://github.com/Renato66/auto-label)
-
-```
-<!-- Replace <OWNER> and <REPOSITORY>. It assumes workflow name is "Labeling%20new%20issue" -->
-[![Auto Label](https://github.com/<OWNER>/<REPOSITORY>/workflows/Labeling%20new%20issue/badge.svg)](https://github.com/Renato66/auto-label)
+```markdown
+[![Auto Label](https://img.shields.io/github/actions/workflow/status/<OWNER>/<REPOSITORY>/<FILE-NAME>.yml?logo=github&label=Auto%20Label)](https://github.com/Renato66/auto-label)
 ```
