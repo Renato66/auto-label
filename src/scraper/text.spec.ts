@@ -31,8 +31,7 @@ describe('getIssueLabels function', () => {
   })
 
   test('should check if there is any synonym for the labels available', () => {
-    const body =
-      'Body with labels: Synonym1'
+    const body = 'Body with labels: Synonym1'
     const labels = ['Label1', 'Label2']
     const labelsSynonyms = { Label1: ['Synonym1'], Label2: ['Synonym2'] }
 

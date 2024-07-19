@@ -31,9 +31,11 @@ const getFilePath = (configurationPath: string): string | undefined => {
   }
 }
 
-const compareArray = (arr?: string[]) => Array.isArray(arr) ? arr : undefined
-const compareBoolean = (bool?: boolean) => typeof bool === 'boolean' ? bool : undefined
-const compareObject = (obj?: Record<string, string[]>) => typeof obj === 'object' && !Array.isArray(obj) ? obj : undefined
+const compareArray = (arr?: string[]) => (Array.isArray(arr) ? arr : undefined)
+const compareBoolean = (bool?: boolean) =>
+  typeof bool === 'boolean' ? bool : undefined
+const compareObject = (obj?: Record<string, string[]>) =>
+  typeof obj === 'object' && !Array.isArray(obj) ? obj : undefined
 
 export const getLabelConfigs = (configurationPath: string): Config | {} => {
   const filePath = getFilePath(configurationPath)

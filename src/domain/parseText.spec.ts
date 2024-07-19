@@ -11,16 +11,14 @@ describe('getIssueLabels function', () => {
   })
 
   test('should return just scoped body', () => {
-    const body =
-      'Body with labels <!-- Label3 --> Label1 Label2'
+    const body = 'Body with labels <!-- Label3 --> Label1 Label2'
     const result = parseText(body, '', true, false)
 
     expect(result).toEqual('Body with labels  Label1 Label2')
   })
 
   test('should return just scoped body', () => {
-    const body =
-      'Body with labels <!-- Label3 --> Label1 Label2'
+    const body = 'Body with labels <!-- Label3 --> Label1 Label2'
     const result = parseText(body, 'Title', true, true)
 
     expect(result).toEqual('Title Body with labels  Label1 Label2')
