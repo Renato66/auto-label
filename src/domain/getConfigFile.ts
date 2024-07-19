@@ -6,6 +6,7 @@ export type Config = {
   defaultLabels: string[]
   labelsSynonyms: Record<string, string[]>
   ignoreComments: boolean
+  includeTitle: boolean
 }
 
 export const getConfigFile = (): Config => {
@@ -20,6 +21,7 @@ export const getConfigFile = (): Config => {
     {}
   )
   const ignoreComments = getInput('ignore-comments', true)
+  const includeTitle = getInput('include-title', true)
   const config = getLabelConfigs(configPath)
 
   return {
@@ -27,6 +29,7 @@ export const getConfigFile = (): Config => {
     defaultLabels,
     labelsSynonyms,
     ignoreComments,
+    includeTitle,
     ...config
   }
 }

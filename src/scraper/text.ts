@@ -39,42 +39,18 @@ const compareLabels = (
   return hasLabels
 }
 
-const parseAutoLabel = (body: string): string => {
-  const autoLabelRegex = new RegExp(
-    /<!-- AUTO-LABEL:START -->(?<label>(\s*\w.+|\n)*?)\s*<!-- AUTO-LABEL:END -->/,
-    'gm'
-  )
-  const autoLabels = body.match(autoLabelRegex)
-
-  if (!autoLabels) return body
-
-  const replaceAutoLabelByLabelValue = (autoLabel: string) =>
-    autoLabel.replace(autoLabelRegex, '$1').trim()
-
-  return autoLabels.map(replaceAutoLabelByLabelValue).join(' ')
-}
-
 export const getIssueLabels = (
-  body: string,
+  text: string,
   labels: string[],
-  ignoreComments: boolean,
   defaultLabels: string[],
   labelsSynonyms: Record<string, string[]>
 ): string[] => {
   const selectedLabels: string[] = []
   const hasLabels = compareLabels(labels, labelsSynonyms)
 
-  const parsedBody = parseAutoLabel(body)
+  hasLabels(text).forEach((elem) => {
+    selectedLabels.push(elem)
+  })
 
-  if (ignoreComments) {
-    const noCommentaryBody = parsedBody.replace(/\<!--(.|\n)*?-->/g, '')
-    hasLabels(noCommentaryBody).map((elem) => {
-      selectedLabels.push(elem)
-    })
-  } else {
-    hasLabels(parsedBody).map((elem) => {
-      selectedLabels.push(elem)
-    })
-  }
   return [...new Set([...selectedLabels, ...defaultLabels])]
 }
