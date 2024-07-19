@@ -10,7 +10,10 @@ inputs:
     required: true
   ignore-comments:
     description: 'ignore labels inside issue comments'
-    default: true
+    default: 'true'
+  include-title:
+    description: 'include title in labels search'
+    default: 'true'
   labels-synonyms:
     description: 'text synonyms for labels'
     default: ''

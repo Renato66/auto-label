@@ -6,6 +6,7 @@ import { addLabels, getRepoLabels } from './service/github'
 import { removeLabelsNotAllowed } from './domain/removeLabelsNotAllowed'
 import { getIssueLabels } from './scraper/text'
 import { getConfigFile } from './domain/getConfigFile'
+import { parseText } from './domain/parseText'
 
 export async function run() {
   try {
@@ -16,7 +17,7 @@ export async function run() {
     const token = core.getInput('repo-token', { required: true })
     const octokit = github.getOctokit(token)
     const issue = github.context.payload.issue!
-    const { labelsNotAllowed, defaultLabels, labelsSynonyms, ignoreComments } =
+    const { labelsNotAllowed, defaultLabels, labelsSynonyms, ignoreComments, includeTitle } =
       getConfigFile()
     core.endGroup()
 
@@ -28,11 +29,15 @@ export async function run() {
     core.info(`Considered labels: ${filteredLabels.length}`)
     core.endGroup()
 
+    core.startGroup(`Parsing body${ includeTitle ? 'and Title' : ''}`)
+    const parsedBody = parseText(issue.body || '', issue.title || '', ignoreComments, includeTitle)
     core.startGroup('Getting repository labels')
+
+
+    core.startGroup('Looking for labels')
     const issueLabels: string[] = getIssueLabels(
-      issue.body!,
+      parsedBody,
       repoLabels,
-      ignoreComments,
       defaultLabels,
       labelsSynonyms
     )

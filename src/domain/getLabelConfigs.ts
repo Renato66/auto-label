@@ -31,6 +31,10 @@ const getFilePath = (configurationPath: string): string | undefined => {
   }
 }
 
+const compareArray = (arr?: string[]) => Array.isArray(arr) ? arr : undefined
+const compareBoolean = (bool?: boolean) => typeof bool === 'boolean' ? bool : undefined
+const compareObject = (obj?: Record<string, string[]>) => typeof obj === 'object' && !Array.isArray(obj) ? obj : undefined
+
 export const getLabelConfigs = (configurationPath: string): Config | {} => {
   const filePath = getFilePath(configurationPath)
   if (!filePath) return {}
@@ -42,21 +46,11 @@ export const getLabelConfigs = (configurationPath: string): Config | {} => {
   try {
     const config = JSON5.parse(fileContent)
     const configObject = {
-      defaultLabels: Array.isArray(config.defaultLabels)
-        ? config.defaultLabels
-        : undefined,
-      labelsNotAllowed: Array.isArray(config.labelsNotAllowed)
-        ? config.labelsNotAllowed
-        : undefined,
-      ignoreComments:
-        typeof config.ignoreComments === 'boolean'
-          ? config.ignoreComments
-          : undefined,
-      labelsSynonyms:
-        typeof config.labelsSynonyms === 'object' &&
-        !Array.isArray(config.labelsSynonyms)
-          ? config.labelsSynonyms
-          : undefined
+      defaultLabels: compareArray(config.defaultLabels),
+      labelsNotAllowed: compareArray(config.labelsNotAllowed),
+      ignoreComments: compareBoolean(config.ignoreComments),
+      includeTitle: compareBoolean(config.includeTitle),
+      labelsSynonyms: compareObject(config.labelsSynonyms)
     }
     return Object.fromEntries(
       Object.entries(configObject).filter(
