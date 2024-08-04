@@ -221,6 +221,27 @@ Labels that will always be set when an issue is created/updated such as `triage`
   ```
 </details>
 
+### Failover Labels
+
+Labels that will be set when an issue is created/updated they no labels found in the text, they will be set even if default labels are set
+they can be set in an Array form:
+
+```json5
+// .github/workflows/auto-label.json5
+{
+  "failoverLabels": ["need more information"]
+}
+```
+
+<details>
+  <summary>yml (deprecating)</summary>
+
+  ```yml
+  failover-labels: '["need more information"]'
+  ```
+</details>
+
+
 ## Badge
 
 To add a badge simple replace <OWNER>, <REPOSITORY> and <FILE-NAME> name:

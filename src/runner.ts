@@ -23,7 +23,7 @@ export async function run() {
       labelsSynonyms,
       ignoreComments,
       includeTitle,
-      failoverDefaultLabels
+      failoverLabels
     } = getConfigFile()
     core.endGroup()
 
@@ -55,8 +55,8 @@ export async function run() {
 
     core.startGroup('Adding labels to issue')
 
-    if ([...issueLabels, ...defaultLabels, ...failoverDefaultLabels].length) {
-      const labels = issueLabels.length ? issueLabels : failoverDefaultLabels
+    if ([...issueLabels, ...defaultLabels, ...failoverLabels].length) {
+      const labels = issueLabels.length ? issueLabels : failoverLabels
       core.startGroup('Adding labels to issue')
       await addLabels(octokit, issue.number, [...new Set([...labels, ...defaultLabels])])
       core.endGroup()

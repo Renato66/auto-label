@@ -67,7 +67,7 @@ describe('run function', () => {
           'repo-token': 'mockedToken',
           'configuration-file': 'src/__mock__/config/empty.json',
           'default-labels': '["label3"]',
-          'failover-default-labels': '["label2"]'
+          'failover-labels': '["label2"]'
         }
         return options[input] || undefined
       })

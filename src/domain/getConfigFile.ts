@@ -4,7 +4,7 @@ import { getLabelConfigs } from './getLabelConfigs'
 export type Config = {
   labelsNotAllowed: string[]
   defaultLabels: string[]
-  failoverDefaultLabels: string[]
+  failoverLabels: string[]
   labelsSynonyms: Record<string, string[]>
   ignoreComments: boolean
   includeTitle: boolean
@@ -17,7 +17,7 @@ export const getConfigFile = (): Config => {
   )
   const labelsNotAllowed = getInput<string[]>('labels-not-allowed', [])
   const defaultLabels = getInput<string[]>('default-labels', [])
-  const failoverDefaultLabels = getInput<string[]>('failover-default-labels', [])
+  const failoverLabels = getInput<string[]>('failover-labels', [])
   const labelsSynonyms = getInput<Record<string, string[]>>(
     'labels-synonyms',
     {}
@@ -32,7 +32,7 @@ export const getConfigFile = (): Config => {
     labelsSynonyms,
     ignoreComments,
     includeTitle,
-    failoverDefaultLabels,
+    failoverLabels,
     ...config
   }
 }
