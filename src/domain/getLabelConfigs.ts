@@ -49,6 +49,7 @@ export const getLabelConfigs = (configurationPath: string): Config | {} => {
     const config = JSON5.parse(fileContent)
     const configObject = {
       defaultLabels: compareArray(config.defaultLabels),
+      failoverLabels: compareArray(config.failoverLabels),
       labelsNotAllowed: compareArray(config.labelsNotAllowed),
       ignoreComments: compareBoolean(config.ignoreComments),
       includeTitle: compareBoolean(config.includeTitle),

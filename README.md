@@ -66,7 +66,9 @@ Add a config file to `.github/workflows/auto-label.json5`
 | ignore-comments    | Ignore labels inside issue comments | false    | true                               | [...](#ignore-comments)    |
 | labels-synonyms    | Text synonyms for labels            | false    | -                                  | [...](#labels-synonyms)    |
 | labels-not-allowed | Labels to ignore                    | false    | -                                  | [...](#labels-not-allowed) |
+| include-title      | Include title in labels search      | false    | true                               | [...](#include-title)      |
 | default-labels     | Labels that will always be set      | false    | -                                  | [...](#default-labels)     |
+| failover-labels    | Labels to set when no labels found  | false    | -                                  | [...](#failover-labels)    |
 
 ### Repo Token
 
@@ -220,6 +222,46 @@ Labels that will always be set when an issue is created/updated such as `triage`
   default-labels: '["triage"]'
   ```
 </details>
+
+### Include Title
+
+If you want to exclude the title in the labels search, you can set it as false:
+
+```json5
+// .github/workflows/auto-label.json5
+{
+  "includeTitle": false
+}
+```
+
+<details>
+  <summary>yml (deprecating)</summary>
+
+  ```yml
+  include-title: false
+  ```
+</details>
+
+### Failover Labels
+
+Labels that will be set when an issue is created/updated they no labels found in the text, they will be set even if default labels are set
+they can be set in an Array form:
+
+```json5
+// .github/workflows/auto-label.json5
+{
+  "failoverLabels": ["need more information"]
+}
+```
+
+<details>
+  <summary>yml (deprecating)</summary>
+
+  ```yml
+  failover-labels: '["need more information"]'
+  ```
+</details>
+
 
 ## Badge
 

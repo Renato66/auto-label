@@ -22,7 +22,8 @@ export async function run() {
       defaultLabels,
       labelsSynonyms,
       ignoreComments,
-      includeTitle
+      includeTitle,
+      failoverLabels
     } = getConfigFile()
     core.endGroup()
 
@@ -41,21 +42,25 @@ export async function run() {
       ignoreComments,
       includeTitle
     )
-    core.startGroup('Getting repository labels')
+    core.endGroup()
 
     core.startGroup('Looking for labels')
     const issueLabels: string[] = getIssueLabels(
       parsedBody,
       repoLabels,
-      defaultLabels,
       labelsSynonyms
     )
     core.info(`Labels found: ${issueLabels.length}`)
     core.endGroup()
 
-    if (issueLabels.length !== 0) {
+    core.startGroup('Adding labels to issue')
+
+    if ([...issueLabels, ...defaultLabels, ...failoverLabels].length) {
+      const labels = issueLabels.length ? issueLabels : failoverLabels
       core.startGroup('Adding labels to issue')
-      await addLabels(octokit, issue.number, issueLabels)
+      await addLabels(octokit, issue.number, [
+        ...new Set([...labels, ...defaultLabels])
+      ])
       core.endGroup()
     }
     core.info('*** Done ***')
