@@ -6,7 +6,7 @@ const compareLabels = (
   labels: string[],
   labelsSynonyms: Record<string, string[]>
 ): ((line: string) => string[]) => {
-  const labelsRegex = new RegExp(
+  const labelsRegex = labels.length ?new RegExp(
     labels
       .map((elem) => {
         if (labelsSynonyms[elem] === undefined) {
@@ -19,7 +19,7 @@ const compareLabels = (
       })
       .join('|'),
     'gi'
-  )
+  ) : null
   let synonymsObject: Record<string, string> = {}
   for (let label in labelsSynonyms) {
     labelsSynonyms[label].forEach((synonym) => {
@@ -27,7 +27,7 @@ const compareLabels = (
     })
   }
   const hasLabels = (line: string): string[] => {
-    const selectedLabels = line.match(labelsRegex) || []
+    const selectedLabels = labelsRegex ? line.match(labelsRegex) || [] : []
     return selectedLabels.map((elem) => {
       return (
         synonymsObject[elem.toLowerCase()] ||
@@ -42,7 +42,6 @@ const compareLabels = (
 export const getIssueLabels = (
   text: string,
   labels: string[],
-  defaultLabels: string[],
   labelsSynonyms: Record<string, string[]>
 ): string[] => {
   const selectedLabels: string[] = []
@@ -52,5 +51,5 @@ export const getIssueLabels = (
     selectedLabels.push(elem)
   })
 
-  return [...new Set([...selectedLabels, ...defaultLabels])]
+  return selectedLabels
 }
