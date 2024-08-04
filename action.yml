@@ -23,6 +23,9 @@ inputs:
   default-labels:
     description: 'default labels'
     default: ''
+  failover-labels:
+    description: 'labels that will be set when no labels found'
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
