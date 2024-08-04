@@ -1,5 +1,4 @@
 import { expect, describe, test, mock, jest } from 'bun:test'
-import * as core from '@actions/core'
 import '@actions/github'
 import { run } from './runner'
 
@@ -28,9 +27,10 @@ mock.module('@actions/github', () => ({
 
 // // Mock service functions
 const addLabelsSpy = jest.fn()
+let getRepoLabels = ['label1']
 mock.module('./service/github', () => ({
-  getRepoLabels: jest.fn(() => ['label1']),
-  addLabels: addLabelsSpy
+  addLabels: addLabelsSpy,
+  getRepoLabels: jest.fn(() => getRepoLabels),
 }))
 
 describe('run function', () => {
@@ -46,8 +46,7 @@ describe('run function', () => {
       })
     }))
     await run()
-    // expect(core.setFailed).not.toHaveBeenCalled()
-    expect(addLabelsSpy).toHaveBeenCalled()
+    expect(addLabelsSpy.mock.calls).toEqual([[ undefined, 123, [ 'label1' ] ]])
   })
   test('should throw an error if no token', async () => {
     mock.module('@actions/core', () => ({
@@ -58,5 +57,22 @@ describe('run function', () => {
       setFailed: jest.fn()
     }))
     expect(async () => await run()).toThrowError()
+  })
+  test.skip('should add if no label is found and failover default labels are set', async () => {
+    // skip because it's not working https://github.com/oven-sh/bun/issues/7823
+    getRepoLabels = []
+    mock.module('@actions/core', () => ({
+      getInput: jest.fn((input: string) => {
+        const options: Record<string, string> = {
+          'repo-token': 'mockedToken',
+          'configuration-file': 'src/__mock__/config/empty.json',
+          'default-labels': '["label3"]',
+          'failover-default-labels': '["label2"]'
+        }
+        return options[input] || undefined
+      })
+    }))
+    await run()
+    expect(addLabelsSpy.mock.calls).toEqual([[ undefined, 123, [ 'label2', 'label3' ] ]])
   })
 })
