@@ -58,7 +58,9 @@ export async function run() {
     if ([...issueLabels, ...defaultLabels, ...failoverLabels].length) {
       const labels = issueLabels.length ? issueLabels : failoverLabels
       core.startGroup('Adding labels to issue')
-      await addLabels(octokit, issue.number, [...new Set([...labels, ...defaultLabels])])
+      await addLabels(octokit, issue.number, [
+        ...new Set([...labels, ...defaultLabels])
+      ])
       core.endGroup()
     }
     core.info('*** Done ***')

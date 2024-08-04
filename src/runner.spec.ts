@@ -30,7 +30,7 @@ const addLabelsSpy = jest.fn()
 let getRepoLabels = ['label1']
 mock.module('./service/github', () => ({
   addLabels: addLabelsSpy,
-  getRepoLabels: jest.fn(() => getRepoLabels),
+  getRepoLabels: jest.fn(() => getRepoLabels)
 }))
 
 describe('run function', () => {
@@ -46,7 +46,7 @@ describe('run function', () => {
       })
     }))
     await run()
-    expect(addLabelsSpy.mock.calls).toEqual([[ undefined, 123, [ 'label1' ] ]])
+    expect(addLabelsSpy.mock.calls).toEqual([[undefined, 123, ['label1']]])
   })
   test('should throw an error if no token', async () => {
     mock.module('@actions/core', () => ({
@@ -73,6 +73,8 @@ describe('run function', () => {
       })
     }))
     await run()
-    expect(addLabelsSpy.mock.calls).toEqual([[ undefined, 123, [ 'label2', 'label3' ] ]])
+    expect(addLabelsSpy.mock.calls).toEqual([
+      [undefined, 123, ['label2', 'label3']]
+    ])
   })
 })
