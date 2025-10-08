@@ -41,11 +41,4 @@ describe('validate function', () => {
     expect(validate).toThrowError('Issue undefined')
   })
 
-  test('should throw an error if issue body is undefined', () => {
-    // Mock github.context.payload.issue.body to be undefined
-    ;(github.context.payload.issue as any) = {}
-
-    // Call the validate function and expect it to throw an error
-    expect(validate).toThrowError('Issue body undefined')
-  })
 })

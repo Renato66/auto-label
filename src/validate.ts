@@ -16,9 +16,6 @@ export const validate = (): undefined => {
   if (issue === undefined) {
     errors.push('Issue undefined')
   }
-  if (issue && !issue.body) {
-    errors.push('Issue body undefined')
-  }
   if (errors.length) {
     throw new Error(errors.join(', '))
   }
