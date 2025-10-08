@@ -40,5 +40,4 @@ describe('validate function', () => {
     // Call the validate function and expect it to throw an error
     expect(validate).toThrowError('Issue undefined')
   })
-
 })

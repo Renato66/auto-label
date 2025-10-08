@@ -81,7 +81,7 @@ describe('run function', () => {
   test('should skip processing when issue body is empty', async () => {
     // Reset the spy to clear previous calls
     addLabelsSpy.mockClear()
-    
+
     // Mock issue with empty body
     const mockIssueEmptyBody = { number: 123, body: '' }
     const mockContextEmptyBody = {
@@ -89,7 +89,7 @@ describe('run function', () => {
         issue: mockIssueEmptyBody
       }
     }
-    
+
     mock.module('@actions/github', () => ({
       getOctokit: jest.fn(),
       context: mockContextEmptyBody
@@ -111,7 +111,7 @@ describe('run function', () => {
     }))
 
     await run()
-    
+
     // Should not call addLabels when body is empty
     expect(addLabelsSpy.mock.calls).toEqual([])
   })

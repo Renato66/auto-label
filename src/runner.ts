@@ -17,14 +17,14 @@ export async function run() {
     const token = core.getInput('repo-token', { required: true })
     const octokit = github.getOctokit(token)
     const issue = github.context.payload.issue!
-    
+
     // Skip processing if issue body is empty
     if (!issue.body) {
       core.info('Issue body is empty, skipping label processing')
       core.info('*** Done ***')
       return
     }
-    
+
     const {
       labelsNotAllowed,
       defaultLabels,
